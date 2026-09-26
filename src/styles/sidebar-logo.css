@@ -1,0 +1,45 @@
+/* Fan Hub Plus custom sidebar logo ----------------------------------------- */
+.sidebar-logo.sidebar-logo-image-link{
+  width:46px;
+  height:46px;
+  padding:0;
+  border-radius:15px;
+  background:transparent;
+  box-shadow:none;
+  display:grid;
+  place-items:center;
+  overflow:visible;
+}
+
+.sidebar-brand-logo{
+  width:44px;
+  height:44px;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  filter:drop-shadow(0 7px 16px rgba(219,61,214,.20));
+  transform:translateZ(0);
+  transition:transform .32s cubic-bezier(.22,1,.36,1),filter .32s ease;
+}
+
+.sidebar-logo-image-link:hover .sidebar-brand-logo,
+.sidebar-logo-image-link:focus-visible .sidebar-brand-logo{
+  transform:translateY(-2px) scale(1.08) rotate(-2deg);
+  filter:drop-shadow(0 10px 22px rgba(231,67,194,.34));
+}
+
+.sidebar-logo-image-link:focus-visible{
+  outline:2px solid color-mix(in srgb,#ec47b6 70%,white);
+  outline-offset:4px;
+}
+
+@media(max-width:1050px){
+  .sidebar-logo.sidebar-logo-image-link{width:44px;height:44px}
+  .sidebar-brand-logo{width:42px;height:42px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .sidebar-brand-logo{transition:none!important}
+  .sidebar-logo-image-link:hover .sidebar-brand-logo,
+  .sidebar-logo-image-link:focus-visible .sidebar-brand-logo{transform:none}
+}

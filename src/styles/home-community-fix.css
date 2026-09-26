@@ -1,0 +1,132 @@
+/* Home community spotlight — intentionally scoped so it cannot break other home sections. */
+.fh-community-section{min-width:0}
+.fh-community-head{margin-bottom:10px}
+.fh-community-more{white-space:nowrap}
+
+.fh-community-grid{
+  display:grid;
+  grid-template-columns:minmax(190px,0.34fr) minmax(0,1fr);
+  gap:12px;
+  min-width:0;
+}
+
+.fh-community-post{
+  min-width:0;
+  min-height:158px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--surface);
+  box-shadow:0 6px 18px rgba(44,52,82,.055);
+  display:flex;
+  flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.fh-community-post:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(44,52,82,.10);border-color:rgba(109,93,252,.24)}
+.fh-community-user{display:flex;align-items:center;gap:8px}
+.fh-community-avatar{
+  width:29px;height:29px;border-radius:50%;display:grid;place-items:center;flex:none;
+  font-size:.66rem;font-weight:800;color:#7258c9;
+  background:linear-gradient(135deg,#f0cfe8,#d5d0ff)
+}
+.fh-community-user>div{display:grid;min-width:0}
+.fh-community-user strong{font-size:.63rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fh-community-user small{font-size:.48rem;color:#9aa1b2;margin-top:2px}
+.fh-community-post>p{
+  margin:10px 0 8px;font-size:.57rem;line-height:1.48;color:#5f687d;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden
+}
+.fh-community-post-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto}
+.fh-community-tag{padding:4px 8px;border-radius:999px;background:#f1edff;color:#7056cc;font-size:.48rem;font-weight:750;white-space:nowrap}
+.fh-community-post-bottom>div{display:flex;align-items:center;gap:8px;color:#8e96a8}
+.fh-community-post-bottom>div span{display:flex;align-items:center;gap:3px;font-size:.47rem}
+
+.fh-community-banner{
+  --fh-community-image:none;
+  position:relative;
+  min-width:0;
+  min-height:158px;
+  overflow:hidden;
+  border:1px solid rgba(220,225,240,.9);
+  border-radius:16px;
+  padding:18px 16px 16px 18px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 108px;
+  gap:12px;
+  align-items:center;
+  background:
+    linear-gradient(90deg,rgba(249,250,255,.98) 0%,rgba(246,248,255,.94) 45%,rgba(242,244,255,.62) 66%,rgba(232,237,255,.22) 100%),
+    var(--fh-community-image);
+  background-size:cover;
+  background-position:center right;
+  box-shadow:0 6px 18px rgba(44,52,82,.045);
+  isolation:isolate;
+}
+.fh-community-banner::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 76% 15%,rgba(129,107,255,.13),transparent 28%),linear-gradient(120deg,transparent 58%,rgba(89,113,255,.08));
+}
+.fh-community-banner-copy{min-width:0;position:relative;z-index:1}
+.fh-community-kicker{display:block;margin-bottom:4px;font-size:.48rem;letter-spacing:.055em;font-weight:800;color:#6e7890}
+.fh-community-banner h3{
+  margin:0;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.48rem;line-height:1.02;letter-spacing:-.045em;color:#161d34
+}
+.fh-community-banner h3 span{
+  background:linear-gradient(90deg,#586ff4,#b54be8);-webkit-background-clip:text;background-clip:text;color:transparent
+}
+.fh-community-proof{display:flex;align-items:center;gap:6px;margin-top:12px;color:#7d879c;min-width:0}
+.fh-community-proof .proof-avatars{display:flex;flex:none}
+.fh-community-proof .proof-avatars img{width:24px;height:24px;border:2px solid #fff;margin-left:-6px}
+.fh-community-proof .proof-avatars img:first-child{margin-left:0}
+.fh-community-proof strong{font-size:.68rem;color:#3a435c}
+.fh-community-proof>span{font-size:.51rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.fh-community-stats{display:grid;gap:7px;position:relative;z-index:1}
+.fh-community-stats>div{
+  min-width:0;padding:8px 9px;border-radius:999px;border:1px solid rgba(224,229,242,.9);
+  display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.86);backdrop-filter:blur(8px);
+  box-shadow:0 5px 14px rgba(50,58,91,.055)
+}
+.fh-community-stats svg{color:#6579ef;flex:none}
+.fh-community-stats>div>span{display:grid;min-width:0}
+.fh-community-stats strong{font-size:.62rem;line-height:1;color:#222a42}
+.fh-community-stats small{font-size:.43rem;color:#8a93a9;margin-top:2px}
+
+:root[data-theme="dark"] .fh-community-banner{
+  background:
+    linear-gradient(90deg,rgba(22,26,42,.98) 0%,rgba(22,26,42,.91) 48%,rgba(22,26,42,.55) 72%,rgba(22,26,42,.25) 100%),
+    var(--fh-community-image);
+  border-color:var(--line)
+}
+:root[data-theme="dark"] .fh-community-banner h3{color:#f5f7ff}
+:root[data-theme="dark"] .fh-community-kicker,:root[data-theme="dark"] .fh-community-proof{color:#aab3c8}
+:root[data-theme="dark"] .fh-community-proof strong{color:#eef1fb}
+:root[data-theme="dark"] .fh-community-stats>div{background:rgba(28,33,53,.88);border-color:rgba(255,255,255,.08)}
+:root[data-theme="dark"] .fh-community-stats strong{color:#f4f6ff}
+
+@media(max-width:1280px){
+  .fh-community-grid{grid-template-columns:minmax(175px,.35fr) minmax(0,1fr)}
+  .fh-community-banner h3{font-size:1.32rem}
+  .fh-community-banner{grid-template-columns:minmax(0,1fr) 102px;padding-inline:15px}
+}
+@media(max-width:1050px){
+  .fh-community-grid{grid-template-columns:220px minmax(0,1fr)}
+  .fh-community-banner h3{font-size:1.55rem}
+}
+@media(max-width:760px){
+  .fh-community-grid{grid-template-columns:1fr}
+  .fh-community-post{min-height:135px}
+  .fh-community-banner{min-height:168px;grid-template-columns:minmax(0,1fr) 102px}
+  .fh-community-banner h3{font-size:1.45rem}
+}
+@media(max-width:520px){
+  .fh-community-head{align-items:flex-start}
+  .fh-community-more{padding:5px 8px!important;font-size:.5rem!important}
+  .fh-community-banner{grid-template-columns:1fr;min-height:0;padding:16px;background-position:65% center}
+  .fh-community-banner h3{font-size:1.42rem}
+  .fh-community-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+  .fh-community-stats>div{border-radius:10px;padding:7px 6px;gap:4px;justify-content:center}
+  .fh-community-stats svg{width:13px}
+  .fh-community-stats small{display:none}
+  .fh-community-proof>span{max-width:125px}
+}

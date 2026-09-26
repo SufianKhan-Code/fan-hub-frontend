@@ -1,0 +1,13 @@
+import { Sparkles, UserPlus } from 'lucide-react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { getErrorMessage } from '../../services/api';
+import PageTransition from '../../components/common/PageTransition';
+const fandoms=['Anime','Gaming','Movies','TV Shows','K-Pop','Comics','Manga','Cosplay'];
+export default function Register(){
+ const {register}=useAuth();const nav=useNavigate();const [form,setForm]=useState({name:'',email:'',password:'',confirmPassword:'',favoriteFandoms:['Anime']});const [status,setStatus]=useState({busy:false,msg:''});
+ const toggle=(f)=>setForm({...form,favoriteFandoms:form.favoriteFandoms.includes(f)?form.favoriteFandoms.filter(x=>x!==f):[...form.favoriteFandoms,f]});
+ const submit=async(e)=>{e.preventDefault();setStatus({busy:true,msg:''});try{await register({...form,categoriesOfInterest:form.favoriteFandoms});nav('/dashboard');}catch(err){setStatus({busy:false,msg:getErrorMessage(err)});}};
+ return <PageTransition><section className="auth-page"><div className="auth-visual"><span className="eyebrow"><Sparkles/> JOIN THE COMMUNITY</span><h1>Build your personal fandom universe.</h1><p>Choose what you love and Fan Hub Plus will shape your dashboard around your interests.</p><div className="fandom-pills decorative">{fandoms.map(f=><span key={f}>{f}</span>)}</div></div><form className="auth-card wide" onSubmit={submit}><h2>Create account</h2><div className="form-grid two"><label>Full name<input value={form.name} onChange={(e)=>setForm({...form,name:e.target.value})} required/></label><label>Email<input type="email" value={form.email} onChange={(e)=>setForm({...form,email:e.target.value})} required/></label><label>Password<input type="password" value={form.password} onChange={(e)=>setForm({...form,password:e.target.value})} minLength={6} required/></label><label>Confirm password<input type="password" value={form.confirmPassword} onChange={(e)=>setForm({...form,confirmPassword:e.target.value})} minLength={6} required/></label></div><fieldset><legend>Favorite fandoms</legend><div className="choice-grid">{fandoms.map(f=><button type="button" className={form.favoriteFandoms.includes(f)?'active':''} onClick={()=>toggle(f)} key={f}>{f}</button>)}</div></fieldset>{status.msg&&<div className="form-alert error">{status.msg}</div>}<button className="button primary full" disabled={status.busy}><UserPlus size={17}/>{status.busy?'Creating universe…':'Create account'}</button><p className="auth-switch">Already a member? <Link to="/login">Sign in</Link></p></form></section></PageTransition>;
+}

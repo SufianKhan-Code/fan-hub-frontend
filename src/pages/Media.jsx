@@ -1,0 +1,19 @@
+import { Headphones, Image, PlayCircle, Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import api from '../services/api';
+import PageTransition from '../components/common/PageTransition';
+import Breadcrumbs from '../components/common/Breadcrumbs';
+import { MediaCard } from '../components/cards/Cards';
+import { RatingControl, ShareButton } from '../components/common/Actions';
+import { SkeletonGrid } from '../components/common/Loading';
+import EmptyState from '../components/common/EmptyState';
+import Pagination from '../components/common/Pagination';
+
+export default function Media(){
+  const [params,setParams]=useSearchParams();const [items,setItems]=useState([]);const [cats,setCats]=useState([]);const [loading,setLoading]=useState(true);const [meta,setMeta]=useState({page:1,pages:1,total:0});const [active,setActive]=useState(null);
+  useEffect(()=>{api.get('/categories').then(({data})=>setCats(data.data||[])).catch(()=>{});},[]);
+  useEffect(()=>{setLoading(true);api.get('/media',{params:{...Object.fromEntries(params.entries()),limit:12}}).then(({data})=>{setItems(data.data||[]);setMeta({page:data.page||1,pages:data.pages||1,total:data.total||0})}).finally(()=>setLoading(false));},[params]);
+  const update=(k,v)=>{const n=new URLSearchParams(params);v?n.set(k,v):n.delete(k);if(k!=='page')n.set('page','1');setParams(n)};
+  return <PageTransition><div className="page-hero media-page-hero"><div className="container"><Breadcrumbs items={[{label:'Media'}]}/><span className="eyebrow">INTERACTIVE MULTIMEDIA CENTER</span><h1>Press play on every fandom.</h1><p>Stream embedded trailers, explore galleries, discover audio, podcasts and animated explainers.</p><div className="hero-trust"><span><PlayCircle/> Video & trailers</span><span><Headphones/> Audio & podcasts</span><span><Image/> Galleries</span></div></div></div><section className="section container"><div className="inline-filters"><label className="search-field"><Search size={17}/><input placeholder="Search media…" value={params.get('search')||''} onChange={(e)=>update('search',e.target.value)}/></label><select value={params.get('category')||''} onChange={(e)=>update('category',e.target.value)}><option value="">All fandoms</option>{cats.map(c=><option key={c._id} value={c.slug}>{c.name}</option>)}</select><select value={params.get('type')||''} onChange={(e)=>update('type',e.target.value)}><option value="">All media</option>{['video','trailer','audio','podcast','gallery','explainer'].map(v=><option key={v}>{v}</option>)}</select></div>{loading?<SkeletonGrid/>:items.length?<div className="card-grid three">{items.map(x=><div key={x._id} onClick={()=>setActive(x)} className="click-card"><MediaCard item={x}/></div>)}</div>:<EmptyState/>}<Pagination page={meta.page} pages={meta.pages} onChange={(p)=>update('page',String(p))}/></section>{active&&<div className="modal-backdrop" onClick={()=>setActive(null)}><div className="media-modal" onClick={(e)=>e.stopPropagation()}><button className="modal-close" onClick={()=>setActive(null)}>×</button><div className="media-viewer">{active.embedUrl?<iframe src={active.embedUrl} title={active.title} allowFullScreen/>:active.audioUrl?<audio controls src={active.audioUrl}/>:active.galleryImages?.length?<div className="gallery-view">{active.galleryImages.map((g,i)=><img src={g} alt="" key={i}/>)}</div>:<img src={active.thumbnailUrl} alt={active.title}/>}</div><div className="media-modal-copy"><span className="eyebrow">{active.fandom} · {active.type}</span><h2>{active.title}</h2><p>{active.description}</p><div className="modal-actions"><RatingControl targetType="media" targetId={active._id} initialAverage={active.ratingAverage} initialCount={active.ratingCount} showThumbs/><ShareButton title={active.title}/></div></div></div></div>}</PageTransition>;
+}

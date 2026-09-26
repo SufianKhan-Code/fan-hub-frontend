@@ -1,0 +1,43 @@
+/* Explore Universes — isolated hover + continuous autoplay fix.
+   Kept separate so no other home-page section is affected. */
+
+.universe-swiper.universe-auto-marquee {
+  /* Reserve vertical breathing room inside Swiper's clipped viewport so
+     hover lift/scale never gets chopped at the top edge. */
+  padding-top: 10px !important;
+  padding-bottom: 7px !important;
+}
+
+.universe-swiper.universe-auto-marquee .swiper-wrapper {
+  /* With autoplay delay 0 this creates a smooth, always-moving left marquee. */
+  transition-timing-function: linear !important;
+  align-items: stretch;
+}
+
+.universe-swiper.universe-auto-marquee .swiper-slide {
+  height: auto;
+  overflow: visible;
+}
+
+.universe-swiper.universe-auto-marquee .reference-universe-card {
+  height: 100%;
+  min-height: 116px;
+  transform-origin: center center;
+}
+
+/* Keep the lift polished while staying safely inside the 10px top gutter. */
+.universe-swiper.universe-auto-marquee .reference-universe-card:hover {
+  transform: translateY(-5px) scale(1.008);
+}
+
+@media (max-width: 760px) {
+  .universe-swiper.universe-auto-marquee {
+    padding-top: 9px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .universe-swiper.universe-auto-marquee .swiper-wrapper {
+    transition-duration: 0ms !important;
+  }
+}

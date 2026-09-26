@@ -1,0 +1,396 @@
+/* ==========================================================================\n   FAN HUB PLUS — FINAL HOME EXPERIENCE\n   Collector Showcase redesign + premium page-wide hover/motion treatment.\n   This file is intentionally scoped to the home page so the rest of the app\n   keeps its existing behavior.\n   ========================================================================== */
+
+.reference-home{
+  --fh-ease:cubic-bezier(.22,1,.36,1);
+  --fh-ease-soft:cubic-bezier(.2,.8,.2,1);
+  --fh-hover-shadow:0 22px 48px rgba(35,42,79,.15);
+  position:relative;
+}
+
+/* Subtle ambient page depth ------------------------------------------------ */
+.reference-home::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(117,92,255,.045),transparent 26%),
+    radial-gradient(circle at 82% 38%,rgba(239,70,171,.035),transparent 28%);
+  opacity:.9;
+}
+.reference-home>*{position:relative;z-index:1}
+
+/* Section headings feel alive without looking busy ------------------------ */
+.reference-home .ref-section-head{
+  transition:transform .35s var(--fh-ease),opacity .35s ease;
+}
+.reference-home .ref-section-head:hover{transform:translateX(2px)}
+.reference-home .ref-section-head>a svg{transition:transform .3s var(--fh-ease)}
+.reference-home .ref-section-head>a:hover svg{transform:translateX(4px)}
+.reference-home .section-icon{
+  transition:transform .4s var(--fh-ease),box-shadow .35s ease;
+}
+.reference-home .ref-section-head:hover .section-icon{
+  transform:rotate(-7deg) scale(1.08);
+  box-shadow:0 7px 16px rgba(88,76,170,.11);
+}
+
+/* Shared premium interaction surface -------------------------------------- */
+.reference-home :is(
+  .reference-universe-card,
+  .fh-community-post,
+  .fh-community-banner,
+  .fh-feature-card,
+  .fh-anime-spotlight,
+  .media-card,
+  .fh-story-lead,
+  .fh-story-editorial,
+  .release-card,
+  .event-card,
+  .fh-collector-feature,
+  .fh-collector-mini,
+  .reference-sitemap-grid>div,
+  .right-rail-card
+){
+  transform:translateZ(0);
+  will-change:transform,box-shadow;
+  transition:
+    transform .52s var(--fh-ease),
+    box-shadow .45s var(--fh-ease),
+    border-color .35s ease,
+    filter .4s ease;
+}
+
+.reference-home :is(
+  .reference-universe-card,
+  .fh-feature-card,
+  .media-card,
+  .event-card,
+  .fh-collector-mini
+):hover{
+  transform:translate3d(0,-8px,0) scale(1.018);
+  box-shadow:var(--fh-hover-shadow);
+  filter:saturate(1.045);
+}
+
+.reference-home :is(.fh-community-post,.right-rail-card,.reference-sitemap-grid>div):hover{
+  transform:translate3d(0,-5px,0);
+  box-shadow:0 17px 34px rgba(35,42,79,.11);
+  border-color:rgba(119,99,222,.24);
+}
+
+/* Image motion: each media card feels more tactile ------------------------ */
+.reference-home :is(
+  .reference-universe-card,
+  .featured-anime-card,
+  .media-card,
+  .event-card,
+  .fh-collector-mini
+) img{
+  transition:transform .75s var(--fh-ease),filter .55s ease;
+  will-change:transform;
+}
+.reference-home :is(
+  .reference-universe-card,
+  .featured-anime-card,
+  .media-card,
+  .event-card,
+  .fh-collector-mini
+):hover img{
+  transform:scale(1.085);
+  filter:saturate(1.08) contrast(1.02);
+}
+
+/* Gentle shine sweep; no JavaScript mouse tracking required --------------- */
+.reference-home :is(
+  .reference-universe-card,
+  .fh-feature-card,
+  .media-card,
+  .event-card,
+  .fh-collector-mini,
+  .right-rail-card
+){position:relative;overflow:hidden}
+.reference-home :is(
+  .reference-universe-card,
+  .fh-feature-card,
+  .media-card,
+  .event-card,
+  .fh-collector-mini,
+  .right-rail-card
+)::after{
+  content:"";
+  position:absolute;
+  inset:-45% auto -45% -65%;
+  width:42%;
+  pointer-events:none;
+  transform:skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.20),transparent);
+  opacity:0;
+  transition:left .72s var(--fh-ease),opacity .22s ease;
+}
+.reference-home :is(
+  .reference-universe-card,
+  .fh-feature-card,
+  .media-card,
+  .event-card,
+  .fh-collector-mini,
+  .right-rail-card
+):hover::after{left:125%;opacity:1}
+
+/* Hero actions ------------------------------------------------------------- */
+.reference-home .ref-primary-btn,
+.reference-home .ref-secondary-btn,
+.reference-home .reference-promo-banner a{
+  transition:transform .34s var(--fh-ease),box-shadow .34s ease,filter .3s ease;
+}
+.reference-home .ref-primary-btn:hover,
+.reference-home .reference-promo-banner a:hover{
+  transform:translateY(-3px) scale(1.025);
+  box-shadow:0 13px 28px rgba(230,62,171,.24);
+  filter:saturate(1.05);
+}
+.reference-home .ref-secondary-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 24px rgba(44,52,82,.12);
+}
+
+/* Community banner: subtle depth instead of a plain flat hover ------------ */
+.reference-home .fh-community-banner:hover{
+  transform:translateY(-5px) scale(1.006);
+  box-shadow:0 22px 42px rgba(58,66,105,.12);
+}
+.reference-home .fh-community-banner .fh-community-stats>div{
+  transition:transform .35s var(--fh-ease),background .35s ease,box-shadow .35s ease;
+}
+.reference-home .fh-community-banner:hover .fh-community-stats>div:nth-child(1){transform:translateX(-3px)}
+.reference-home .fh-community-banner:hover .fh-community-stats>div:nth-child(2){transform:translateX(3px)}
+.reference-home .fh-community-banner:hover .fh-community-stats>div:nth-child(3){transform:translateX(-2px)}
+
+/* Featured Anime: individual personality ---------------------------------- */
+.reference-home .fh-feature-card:hover .fh-card-play{
+  transform:translate(-50%,-50%) scale(1.12) rotate(4deg);
+  box-shadow:0 10px 24px rgba(91,76,195,.24);
+}
+.reference-home .fh-card-play{transition:transform .35s var(--fh-ease),box-shadow .35s ease}
+.reference-home .fh-anime-spotlight:hover{
+  transform:translateY(-7px) scale(1.01);
+  box-shadow:0 24px 50px rgba(54,50,104,.18);
+}
+.reference-home .fh-anime-spotlight .fh-spotlight-cta svg{transition:transform .3s var(--fh-ease)}
+.reference-home .fh-anime-spotlight:hover .fh-spotlight-cta svg{transform:translateX(5px)}
+
+/* Stories have distinct hover language ------------------------------------ */
+.reference-home .fh-story-lead:hover{
+  transform:translateY(-7px) scale(1.006);
+  box-shadow:0 25px 50px rgba(28,33,60,.20);
+}
+.reference-home .fh-story-editorial:hover{
+  transform:translateY(-7px) rotate(.15deg);
+  box-shadow:0 22px 46px rgba(44,52,82,.14);
+}
+.reference-home .fh-story-editorial img{transition:transform .8s var(--fh-ease),filter .5s ease}
+.reference-home .fh-story-editorial:hover img{transform:scale(1.07);filter:saturate(1.06)}
+.reference-home .fh-story-circle-arrow{transition:transform .35s var(--fh-ease),background .35s ease,color .35s ease}
+.reference-home .fh-story-editorial:hover .fh-story-circle-arrow{transform:translateX(4px) rotate(-8deg);background:#6f5ce7;color:#fff}
+
+/* Release cards ------------------------------------------------------------ */
+.reference-home .release-card:hover{
+  transform:translateY(-8px) scale(1.012);
+  box-shadow:0 23px 46px rgba(38,45,76,.15);
+}
+.reference-home .release-card img{transition:transform .8s var(--fh-ease),filter .5s ease}
+.reference-home .release-card:hover img{transform:scale(1.075);filter:saturate(1.06)}
+
+/* ==========================================================================\n   COLLECTOR SHOWCASE — editorial collector wall\n   ========================================================================== */
+.fh-collector-section{padding-top:18px}
+.fh-collector-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(340px,.9fr);
+  gap:14px;
+  min-height:420px;
+}
+
+.fh-collector-feature{
+  position:relative;
+  isolation:isolate;
+  min-height:420px;
+  overflow:hidden;
+  border-radius:22px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  color:#fff;
+  background-image:
+    linear-gradient(180deg,rgba(12,14,27,.12) 0%,rgba(12,14,27,.28) 38%,rgba(10,12,24,.91) 100%),
+    var(--collector-image);
+  background-size:cover;
+  background-position:center;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 12px 30px rgba(27,31,56,.13);
+}
+.fh-collector-feature::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(156,89,255,.28),transparent 28%),
+    linear-gradient(110deg,rgba(74,61,184,.12),transparent 45%);
+  transition:opacity .45s ease,transform .7s var(--fh-ease);
+}
+.fh-collector-feature-glow{
+  position:absolute;
+  width:210px;
+  height:210px;
+  right:-60px;
+  bottom:-60px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(238,67,178,.38),transparent 68%);
+  filter:blur(12px);
+  opacity:.7;
+  transition:transform .8s var(--fh-ease),opacity .45s ease;
+}
+.fh-collector-feature:hover{
+  transform:translateY(-7px) scale(1.008);
+  box-shadow:0 28px 58px rgba(27,31,56,.22);
+}
+.fh-collector-feature:hover::before{transform:scale(1.04);opacity:1}
+.fh-collector-feature:hover .fh-collector-feature-glow{transform:translate(-18px,-18px) scale(1.22);opacity:1}
+
+.fh-collector-feature-top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
+.fh-collector-drop,.fh-collector-score{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:30px;
+  padding:0 10px;
+  border-radius:999px;
+  backdrop-filter:blur(10px);
+  font-size:.58rem;
+  font-weight:800;
+  letter-spacing:.035em;
+}
+.fh-collector-drop{background:rgba(20,22,39,.62);border:1px solid rgba(255,255,255,.18)}
+.fh-collector-score{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16)}
+.fh-collector-score svg{color:#ff6eb9}
+
+.fh-collector-feature-copy{position:relative;z-index:1;max-width:560px}
+.fh-collector-fandom{display:block;margin-bottom:7px;color:#d9d6ff;font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.fh-collector-feature h3{margin:0;max-width:520px;font-family:"Plus Jakarta Sans",sans-serif;font-size:1.72rem;line-height:1.08;letter-spacing:-.035em;color:#fff}
+.fh-collector-feature p{max-width:520px;margin:10px 0 14px;color:rgba(244,246,255,.78);font-size:.68rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fh-collector-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px}
+.fh-collector-meta span{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);font-size:.51rem;color:#f4f5ff}
+.fh-collector-open{display:inline-flex;align-items:center;gap:7px;font-size:.62rem;font-weight:800;color:#fff}
+.fh-collector-open svg{transition:transform .35s var(--fh-ease)}
+.fh-collector-feature:hover .fh-collector-open svg{transform:translateX(5px)}
+
+.fh-collector-side-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:12px;
+  min-width:0;
+}
+.fh-collector-mini{
+  min-width:0;
+  overflow:hidden;
+  border-radius:17px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  box-shadow:0 8px 22px rgba(44,52,82,.055);
+}
+.fh-collector-mini-1{grid-column:1/-1;display:grid;grid-template-columns:1.05fr 1fr}
+.fh-collector-mini-media{position:relative;overflow:hidden;min-height:126px;background:#151827}
+.fh-collector-mini-1 .fh-collector-mini-media{min-height:196px}
+.fh-collector-mini-media img{width:100%;height:100%;object-fit:cover;display:block}
+.fh-collector-mini-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(12,15,28,.48) 100%);pointer-events:none}
+.fh-collector-mini-tag{position:absolute;left:9px;top:9px;z-index:2;padding:5px 8px;border-radius:999px;background:rgba(15,18,32,.68);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:.48rem;font-weight:750}
+.fh-collector-mini-arrow{position:absolute;right:9px;bottom:9px;z-index:2;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);transition:transform .35s var(--fh-ease),background .35s ease}
+.fh-collector-mini:hover .fh-collector-mini-arrow{transform:rotate(-8deg) scale(1.08);background:rgba(112,91,230,.82)}
+.fh-collector-mini-copy{padding:12px 13px 13px;display:flex;flex-direction:column;min-width:0}
+.fh-collector-mini-copy>span{font-size:.48rem;font-weight:800;color:#7b62df;text-transform:uppercase;letter-spacing:.055em}
+.fh-collector-mini-copy h3{margin:5px 0 10px;font-size:.65rem;line-height:1.35;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fh-collector-mini-copy>div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:9px;border-top:1px solid var(--line)}
+.fh-collector-mini-copy small{font-size:.45rem;color:var(--muted)}
+.fh-collector-mini-copy strong{display:flex;align-items:center;gap:3px;font-size:.48rem;color:#df48a7}
+.fh-collector-mini-1 .fh-collector-mini-copy{padding:17px}
+.fh-collector-mini-1 .fh-collector-mini-copy>span{font-size:.55rem}
+.fh-collector-mini-1 .fh-collector-mini-copy h3{font-size:.82rem;margin-top:7px}
+
+.fh-collector-empty{padding:28px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);text-align:center;background:var(--surface)}
+
+/* Promo strip gets a moving highlight only on hover ----------------------- */
+.reference-home .reference-promo-banner{transition:transform .45s var(--fh-ease),box-shadow .45s ease}
+.reference-home .reference-promo-banner:hover{transform:translateY(-4px);box-shadow:0 19px 40px rgba(55,70,160,.19)}
+.reference-home .reference-promo-banner::before{
+  content:"";
+  position:absolute;
+  top:-60%;
+  bottom:-60%;
+  left:-25%;
+  width:16%;
+  transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  opacity:0;
+}
+.reference-home .reference-promo-banner:hover::before{animation:fhPromoSweep 1.05s var(--fh-ease) both}
+@keyframes fhPromoSweep{0%{left:-25%;opacity:0}18%{opacity:1}100%{left:118%;opacity:0}}
+
+/* Right rail micro interactions ------------------------------------------- */
+.reference-home .trending-row,.reference-home .top-character-row{
+  transition:transform .32s var(--fh-ease),background .3s ease,border-color .3s ease;
+  border-radius:9px;
+}
+.reference-home .trending-row:hover,.reference-home .top-character-row:hover{transform:translateX(5px);background:var(--surface-2)}
+.reference-home .trending-row img,.reference-home .top-character-row img{transition:transform .45s var(--fh-ease),filter .4s ease}
+.reference-home .trending-row:hover img,.reference-home .top-character-row:hover img{transform:scale(1.06);filter:saturate(1.06)}
+
+/* Responsive --------------------------------------------------------------- */
+@media(max-width:1180px){
+  .fh-collector-layout{grid-template-columns:minmax(0,1.15fr) minmax(300px,.9fr)}
+  .fh-collector-feature h3{font-size:1.48rem}
+}
+@media(max-width:900px){
+  .fh-collector-layout{grid-template-columns:1fr;min-height:0}
+  .fh-collector-feature{min-height:390px}
+  .fh-collector-side-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:auto}
+  .fh-collector-mini-1{grid-column:auto;display:block}
+  .fh-collector-mini-1 .fh-collector-mini-media,.fh-collector-mini-media{min-height:150px}
+  .fh-collector-mini-1 .fh-collector-mini-copy{padding:12px 13px 13px}
+  .fh-collector-mini-1 .fh-collector-mini-copy>span{font-size:.48rem}
+  .fh-collector-mini-1 .fh-collector-mini-copy h3{font-size:.65rem;margin:5px 0 10px}
+}
+@media(max-width:620px){
+  .fh-collector-feature{min-height:360px;padding:18px;border-radius:18px;background-position:center}
+  .fh-collector-feature h3{font-size:1.25rem}
+  .fh-collector-feature p{font-size:.62rem}
+  .fh-collector-side-grid{grid-template-columns:1fr 1fr}
+  .fh-collector-mini:last-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+  .fh-collector-mini:last-child .fh-collector-mini-media{min-height:150px}
+  .reference-home :is(.reference-universe-card,.fh-feature-card,.media-card,.event-card,.fh-collector-mini):hover{transform:translateY(-4px) scale(1.008)}
+}
+@media(max-width:430px){
+  .fh-collector-side-grid{grid-template-columns:1fr}
+  .fh-collector-mini:last-child{grid-column:auto;display:block}
+  .fh-collector-feature-top{align-items:flex-start}
+  .fh-collector-score{display:none}
+  .fh-collector-meta span:nth-child(3){display:none}
+}
+
+/* Accessibility: respect reduced-motion ----------------------------------- */
+@media(prefers-reduced-motion:reduce){
+  .reference-home *,
+  .reference-home *::before,
+  .reference-home *::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+  .reference-home :is(
+    .reference-universe-card,.fh-community-post,.fh-community-banner,.fh-feature-card,
+    .fh-anime-spotlight,.media-card,.fh-story-lead,.fh-story-editorial,.release-card,
+    .event-card,.fh-collector-feature,.fh-collector-mini,.reference-sitemap-grid>div,.right-rail-card
+  ):hover{transform:none!important}
+}

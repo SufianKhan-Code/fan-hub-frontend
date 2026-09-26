@@ -1,0 +1,12 @@
+import { BookmarkX, Save } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import api from '../../services/api';
+import PageTransition from '../../components/common/PageTransition';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
+import EmptyState from '../../components/common/EmptyState';
+export default function Bookmarks(){
+ const[items,setItems]=useState([]);const[filter,setFilter]=useState('');const[notes,setNotes]=useState({});const load=()=>api.get('/bookmarks',{params:filter?{targetType:filter}:{}}).then(({data})=>{setItems(data.data||[]);setNotes(Object.fromEntries((data.data||[]).map(x=>[x._id,x.note||''])))});useEffect(()=>{load();},[filter]);
+ const save=async(id)=>{await api.put(`/bookmarks/${id}/note`,{note:notes[id]||''});};const remove=async(id)=>{await api.delete(`/bookmarks/${id}`);load();};
+ return <PageTransition><div className="page-hero compact"><div className="container"><Breadcrumbs items={[{label:'Bookmarks'}]}/><span className="eyebrow">SAVED COLLECTION</span><h1>Your personal fandom shelf.</h1><p>Bookmarks persist in the database and can include private notes.</p></div></div><section className="section container"><div className="inline-filters"><select value={filter} onChange={(e)=>setFilter(e.target.value)}><option value="">All saved items</option>{['content','article','character','media','merchandise','event'].map(v=><option key={v}>{v}</option>)}</select></div>{items.length?<div className="bookmark-list">{items.map(x=><article key={x._id}><Link to={x.linkUrl||'/'} className="bookmark-image">{x.imageUrl?<img src={x.imageUrl} alt=""/>:<span>★</span>}</Link><div className="bookmark-main"><span className="eyebrow">{x.targetType} · {x.fandom}</span><Link to={x.linkUrl||'/'}><h3>{x.title}</h3></Link><textarea value={notes[x._id]||''} onChange={(e)=>setNotes({...notes,[x._id]:e.target.value})} placeholder="Add a private note…" maxLength={500}/><div className="bookmark-actions"><button className="button ghost small" onClick={()=>save(x._id)}><Save size={15}/>Save note</button><button className="button danger small" onClick={()=>remove(x._id)}><BookmarkX size={15}/>Remove</button></div></div></article>)}</div>:<EmptyState title="No bookmarks yet" text="Save articles, characters, media, merchandise or events and they will appear here."/>}</section></PageTransition>;
+}

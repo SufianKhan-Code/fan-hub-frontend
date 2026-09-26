@@ -1,0 +1,11 @@
+import { ArrowRight, Compass, LayoutDashboard, ShieldCheck, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import PageTransition from '../components/common/PageTransition';
+import Breadcrumbs from '../components/common/Breadcrumbs';
+const groups=[
+ {title:'Discover',icon:Compass,links:[['Home','/'],['Content Explorer','/explore'],['Global Search','/search'],['Characters','/characters'],['Articles','/articles'],['Multimedia','/media'],['Merchandise','/merchandise'],['Upcoming Releases','/releases'],['Events','/events'],['Event Calendar','/calendar']]},
+ {title:'Fandom universes',icon:Users,links:[['Anime','/category/anime'],['Gaming','/category/gaming'],['Movies','/category/movies'],['TV Shows','/category/tv-shows'],['K-Pop','/category/k-pop'],['Comics','/category/comics'],['Manga','/category/manga'],['Cosplay','/category/cosplay']]},
+ {title:'Community & account',icon:LayoutDashboard,links:[['Sign in','/login'],['Register','/register'],['Dashboard','/dashboard'],['Profile','/profile'],['Bookmarks','/bookmarks'],['My Submissions','/submissions'],['Submit Content','/submit-content'],['Feedback','/feedback']]},
+ {title:'Curator admin',icon:ShieldCheck,links:[['Admin Dashboard','/admin'],['Categories','/admin/categories'],['Content','/admin/content'],['Media','/admin/media'],['Characters','/admin/characters'],['Articles','/admin/articles'],['Merchandise','/admin/merchandise'],['Releases','/admin/releases'],['Events','/admin/events'],['Users','/admin/users'],['Submissions','/admin/submissions'],['Feedback','/admin/feedback'],['Chatbot Knowledge','/admin/chatbot'],['Analytics','/admin/analytics']]}
+];
+export default function Sitemap(){return <PageTransition><div className="page-hero compact"><div className="container"><Breadcrumbs items={[{label:'Sitemap'}]}/><span className="eyebrow">PLATFORM SITEMAP</span><h1>Every route in the fandom universe.</h1><p>This sitemap is also surfaced on the home page to make platform flow immediately understandable.</p></div></div><section className="section container"><div className="sitemap-grid">{groups.map(g=>{const Icon=g.icon;return <article key={g.title}><span className="sitemap-icon"><Icon/></span><h2>{g.title}</h2>{g.links.map(([name,to])=><Link key={to} to={to}>{name}<ArrowRight size={15}/></Link>)}</article>})}</div></section></PageTransition>}

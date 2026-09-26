@@ -1,0 +1,335 @@
+/* ==========================================================================\n   FAN HUB PLUS — TRUE BLACK DARK THEME\n   Loaded after index.css so it overrides legacy navy dark-mode surfaces.\n   Light theme is intentionally untouched.\n   ========================================================================== */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #030303 !important;
+  --surface: #090909 !important;
+  --surface-2: #101010 !important;
+  --text: #f7f7f8 !important;
+  --muted: #a8a8b0 !important;
+  --line: #242424 !important;
+  --shadow: 0 22px 70px rgba(0,0,0,.62) !important;
+  --shadow-sm: 0 10px 30px rgba(0,0,0,.46) !important;
+}
+
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] #root,
+:root[data-theme="dark"] .app-shell,
+:root[data-theme="dark"] .reference-shell,
+:root[data-theme="dark"] .app-main-region,
+:root[data-theme="dark"] .route-stage,
+:root[data-theme="dark"] main {
+  background: #030303 !important;
+  color: var(--text) !important;
+}
+
+/* App chrome --------------------------------------------------------------- */
+:root[data-theme="dark"] .desktop-app-sidebar,
+:root[data-theme="dark"] .top-appbar,
+:root[data-theme="dark"] .site-header,
+:root[data-theme="dark"] .accessibility-bar,
+:root[data-theme="dark"] .mobile-nav,
+:root[data-theme="dark"] .dropdown-panel,
+:root[data-theme="dark"] .account-panel,
+:root[data-theme="dark"] .topbar-account-menu {
+  background: rgba(7,7,7,.97) !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 16px 50px rgba(0,0,0,.48) !important;
+}
+
+:root[data-theme="dark"] .top-appbar,
+:root[data-theme="dark"] .site-header {
+  backdrop-filter: blur(20px) saturate(115%) !important;
+}
+
+:root[data-theme="dark"] .sidebar-link,
+:root[data-theme="dark"] .nav-link {
+  color: #aaaab3 !important;
+}
+
+:root[data-theme="dark"] .sidebar-link:hover,
+:root[data-theme="dark"] .nav-link:hover,
+:root[data-theme="dark"] .dropdown-panel a:hover,
+:root[data-theme="dark"] .dropdown-panel button:hover {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+
+:root[data-theme="dark"] .sidebar-link.active,
+:root[data-theme="dark"] .reference-admin-shell .admin-sidebar nav a.active {
+  background: linear-gradient(90deg, rgba(236,72,153,.16), rgba(109,93,252,.12), rgba(0,0,0,0)) !important;
+  color: #ff70bd !important;
+  box-shadow: inset 0 0 0 1px rgba(236,72,153,.08) !important;
+}
+
+:root[data-theme="dark"] .sidebar-promo,
+:root[data-theme="dark"] .rail-quick-card,
+:root[data-theme="dark"] .topbar-search,
+:root[data-theme="dark"] .hero-search,
+:root[data-theme="dark"] .global-search-bar,
+:root[data-theme="dark"] .reference-sitemap-strip {
+  background: #0b0b0b !important;
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* Page / section backgrounds --------------------------------------------- */
+:root[data-theme="dark"] .soft-section,
+:root[data-theme="dark"] .editorial-section,
+:root[data-theme="dark"] .gradient-section,
+:root[data-theme="dark"] .community-section,
+:root[data-theme="dark"] .page-section,
+:root[data-theme="dark"] .reference-home,
+:root[data-theme="dark"] .dashboard-page,
+:root[data-theme="dark"] .admin-content,
+:root[data-theme="dark"] .reference-admin-shell,
+:root[data-theme="dark"] .reference-admin-shell .admin-content {
+  background: #030303 !important;
+}
+
+:root[data-theme="dark"] .community-section {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(109,93,252,.10), transparent 30%),
+    radial-gradient(circle at 86% 72%, rgba(236,72,153,.08), transparent 34%) !important;
+}
+
+:root[data-theme="dark"] .page-hero,
+:root[data-theme="dark"] .page-hero.compact {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(109,93,252,.10), transparent 34%),
+    #050505 !important;
+  border-color: var(--line) !important;
+}
+
+/* Home hero: preserve image, replace navy overlay with black -------------- */
+:root[data-theme="dark"] .reference-hero::before {
+  background-image:
+    linear-gradient(90deg, rgba(3,3,3,.98) 0%, rgba(3,3,3,.93) 30%, rgba(3,3,3,.48) 62%, rgba(3,3,3,.18) 100%),
+    var(--hero-image) !important;
+}
+
+:root[data-theme="dark"] .reference-kicker,
+:root[data-theme="dark"] .hero-quote-chip,
+:root[data-theme="dark"] .ref-secondary-btn {
+  background: rgba(8,8,8,.84) !important;
+  color: #f5f5f7 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+/* Cards / panels ----------------------------------------------------------- */
+:root[data-theme="dark"] :is(
+  .content-card,
+  .article-card,
+  .media-card,
+  .merch-card,
+  .event-card,
+  .character-card,
+  .release-card,
+  .featured-anime-card,
+  .right-rail-card,
+  .community-post-card,
+  .activity-feature-card,
+  .activity-conversation-panel,
+  .dashboard-panel,
+  .dashboard-stats article,
+  .feedback-card,
+  .admin-panel,
+  .admin-metrics article,
+  .reference-sitemap-grid > div,
+  .search-result,
+  .bookmark-list article,
+  .submission-list article,
+  .faq-admin-grid article,
+  .feedback-admin-list article,
+  .crud-modal,
+  .auth-card,
+  .calendar-card,
+  .detail-aside > div,
+  .product-detail-card
+) {
+  background-color: #090909 !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.42) !important;
+}
+
+:root[data-theme="dark"] :is(
+  .content-card,
+  .article-card,
+  .media-card,
+  .merch-card,
+  .event-card,
+  .character-card,
+  .release-card,
+  .featured-anime-card,
+  .right-rail-card,
+  .community-post-card,
+  .activity-feature-card,
+  .dashboard-panel,
+  .admin-panel
+):hover {
+  border-color: #353535 !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.025) !important;
+}
+
+/* New home experience sections ------------------------------------------- */
+:root[data-theme="dark"] .activity-conversation-panel {
+  background-image:
+    linear-gradient(90deg, rgba(4,4,4,.98) 0%, rgba(4,4,4,.92) 42%, rgba(4,4,4,.52) 70%, rgba(4,4,4,.22) 100%),
+    var(--activity-image) !important;
+}
+
+:root[data-theme="dark"] .activity-stat-pill {
+  background: rgba(10,10,10,.88) !important;
+  border-color: rgba(255,255,255,.09) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.45) !important;
+}
+
+:root[data-theme="dark"] .reference-promo-banner {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(109,93,252,.22), transparent 31%),
+    radial-gradient(circle at 85% 75%, rgba(236,72,153,.20), transparent 34%),
+    #080808 !important;
+  border: 1px solid #242424 !important;
+}
+
+/* Forms ------------------------------------------------------------------- */
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] .form-control,
+:root[data-theme="dark"] .form-select {
+  background: #0b0b0b !important;
+  color: #f7f7f8 !important;
+  border-color: #292929 !important;
+  box-shadow: none !important;
+}
+
+:root[data-theme="dark"] input:focus,
+:root[data-theme="dark"] select:focus,
+:root[data-theme="dark"] textarea:focus,
+:root[data-theme="dark"] .form-control:focus,
+:root[data-theme="dark"] .form-select:focus {
+  background: #0c0c0c !important;
+  border-color: rgba(109,93,252,.72) !important;
+  box-shadow: 0 0 0 3px rgba(109,93,252,.12) !important;
+}
+
+:root[data-theme="dark"] select option {
+  background: #090909 !important;
+  color: #f7f7f8 !important;
+}
+
+/* Tables / admin ----------------------------------------------------------- */
+:root[data-theme="dark"] .reference-admin-shell .admin-sidebar,
+:root[data-theme="dark"] .admin-sidebar {
+  background: #070707 !important;
+  border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .reference-admin-shell .admin-table-wrap,
+:root[data-theme="dark"] .admin-table-wrap,
+:root[data-theme="dark"] .admin-table,
+:root[data-theme="dark"] table {
+  background: #090909 !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .reference-admin-shell .admin-table th,
+:root[data-theme="dark"] .admin-table th,
+:root[data-theme="dark"] thead th {
+  background: #111111 !important;
+  color: #b7b7bf !important;
+  border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .admin-table td,
+:root[data-theme="dark"] tbody td {
+  background: #090909 !important;
+  color: #e7e7ea !important;
+  border-color: #1f1f1f !important;
+}
+
+:root[data-theme="dark"] .admin-table tbody tr:hover td,
+:root[data-theme="dark"] tbody tr:hover td {
+  background: #101010 !important;
+}
+
+/* Auth pages --------------------------------------------------------------- */
+:root[data-theme="dark"] .auth-page {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(109,93,252,.08), transparent 28%),
+    radial-gradient(circle at 85% 78%, rgba(236,72,153,.07), transparent 30%),
+    #030303 !important;
+}
+
+:root[data-theme="dark"] .auth-visual {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(109,93,252,.26), transparent 30%),
+    radial-gradient(circle at 78% 72%, rgba(236,72,153,.20), transparent 34%),
+    #070707 !important;
+}
+
+/* Chatbot / floating UI ---------------------------------------------------- */
+:root[data-theme="dark"] :is(
+  .chatbot-panel,
+  .chatbot-header,
+  .chatbot-messages,
+  .chatbot-input,
+  .toast,
+  .modal-content,
+  .popover,
+  .tooltip-inner
+) {
+  background-color: #090909 !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+
+/* Footer ------------------------------------------------------------------- */
+:root[data-theme="dark"] .reference-footer,
+:root[data-theme="dark"] .fhp-footer,
+:root[data-theme="dark"] footer {
+  background-color: #050505 !important;
+  border-color: var(--line) !important;
+}
+
+:root[data-theme="dark"] .fhp-footer::before {
+  opacity: .18 !important;
+}
+
+/* Leaflet and map shells: keep map readable, blacken surrounding chrome ---- */
+:root[data-theme="dark"] .leaflet-control,
+:root[data-theme="dark"] .leaflet-popup-content-wrapper,
+:root[data-theme="dark"] .leaflet-popup-tip {
+  background: #0b0b0b !important;
+  color: #f7f7f8 !important;
+  border-color: var(--line) !important;
+}
+
+/* Scrollbars --------------------------------------------------------------- */
+:root[data-theme="dark"] * {
+  scrollbar-color: #333 #080808;
+}
+
+:root[data-theme="dark"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+:root[data-theme="dark"] ::-webkit-scrollbar-track { background: #070707; }
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb { background: #2b2b2b; border-radius: 999px; border: 2px solid #070707; }
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
+
+/* Text polish -------------------------------------------------------------- */
+:root[data-theme="dark"] :is(h1,h2,h3,h4,h5,h6,strong) { color: #f7f7f8; }
+:root[data-theme="dark"] p { color: #a8a8b0; }
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] small { color: #9d9da6; }
+
+/* Keep brand accents vivid — only navy surfaces are removed ---------------- */
+:root[data-theme="dark"] .button.primary,
+:root[data-theme="dark"] .ref-primary-btn,
+:root[data-theme="dark"] .sidebar-logo,
+:root[data-theme="dark"] .brand-mark,
+:root[data-theme="dark"] .admin-brand-mark,
+:root[data-theme="dark"] .chatbot-fab {
+  filter: saturate(1.05) brightness(1.02);
+}
