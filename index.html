@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" /><text y='.9em' font-size='90'>🌌</text></svg>" />
+    <link rel="icon" type="image/png" href="/images/fanhub-logo.png" />
+    <link rel="apple-touch-icon" href="/images/fanhub-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
     <title>Fan Hub Plus — Fandom Universe Portal</title>
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,9 +13,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <!-- Leaflet Map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+      #initial-loader{
+        position:fixed;
+        inset:0;
+        z-index:99999;
+        display:grid;
+        place-items:center;
+        background:#050505;
+        transition:opacity .18s ease;
+      }
+      #initial-loader img{
+        width:64px;
+        height:64px;
+        object-fit:contain;
+        filter:drop-shadow(0 10px 24px rgba(221,65,210,.24));
+        animation:fanhub-loader-pulse 1.15s ease-in-out infinite alternate;
+      }
+      @keyframes fanhub-loader-pulse{
+        from{transform:scale(.96);opacity:.78}
+        to{transform:scale(1.04);opacity:1}
+      }
+      @media (prefers-reduced-motion:reduce){
+        #initial-loader img{animation:none}
+      }
+    </style>
   </head>
   <body class="theme-light">
+    <div id="initial-loader" aria-label="Loading Fan Hub Plus">
+      <img src="/images/fanhub-logo.png" alt="Fan Hub Plus" />
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('initial-loader');
+        if (!loader) return;
+        loader.style.opacity = '0';
+        window.setTimeout(() => loader.remove(), 180);
+      });
+    </script>
   </body>
 </html>

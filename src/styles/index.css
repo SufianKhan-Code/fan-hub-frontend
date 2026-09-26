@@ -387,3 +387,263 @@ button:active,.button:active,.ref-primary-btn:active,.ref-secondary-btn:active{t
     background-image:linear-gradient(90deg,rgba(17,20,31,.98) 0%,rgba(17,20,31,.90) 30%,rgba(17,20,31,.35) 62%,rgba(17,20,31,.12) 100%),var(--hero-image)!important;
   }
 }
+
+/* ========================================================================== */
+/* Focused UI polish — chatbot, account menu                                  */
+/* ========================================================================== */
+
+/* Keep Nova fully below the fixed navigation instead of letting its top edge
+   sit behind the app bar on shorter screens. */
+.chatbot-panel{
+  top:calc(var(--topbar-h) + 14px);
+  bottom:92px;
+  height:auto;
+  max-height:none;
+}
+.chatbot-fab{
+  right:24px;
+  bottom:22px;
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  box-shadow:0 14px 34px rgba(109,93,252,.3);
+}
+.chatbot-fab.open{
+  width:50px;
+  height:50px;
+  border-radius:16px;
+}
+.chatbot-panel header{
+  min-height:64px;
+  padding:12px 14px;
+}
+.chat-input{
+  align-items:center;
+  padding:10px 11px;
+}
+.chat-input input{
+  min-height:44px;
+}
+.chat-input button{
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  border-radius:14px;
+}
+
+/* Give the signed-in profile a deliberate, unclipped layout in the desktop
+   navbar while keeping its existing compact responsive behaviour. */
+.topbar-account-button{
+  min-width:188px;
+  max-width:224px;
+  min-height:42px;
+  padding:4px 8px 4px 4px;
+  gap:9px;
+  border:1px solid transparent;
+  transition:background-color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.topbar-account-button:hover{
+  background:var(--surface-2);
+  border-color:var(--line);
+}
+.avatar-shell{
+  width:34px;
+  height:34px;
+  flex:0 0 34px;
+}
+.topbar-account-copy{
+  flex:1;
+  min-width:0;
+  line-height:1.15;
+}
+.topbar-account-copy strong{
+  max-width:142px;
+  font-size:.7rem;
+}
+.topbar-account-copy small{
+  margin-top:2px;
+  font-size:.58rem;
+}
+.topbar-account-button>svg{
+  flex:0 0 auto;
+  opacity:.72;
+}
+
+@media(max-width:620px){
+  .chatbot-panel{
+    top:calc(var(--topbar-h) + 10px);
+    right:12px;
+    bottom:78px;
+    width:calc(100vw - 24px);
+  }
+  .chatbot-fab{
+    right:14px;
+    bottom:14px;
+    width:50px;
+    height:50px;
+    border-radius:16px;
+  }
+}
+
+/* ========================================================================== 
+   FAN HUB PLUS — UI POLISH ROUND 2
+   Admin activity width, navbar search focus, and auth form spacing.
+   ========================================================================== */
+
+/* Admin dashboard: let Recent activity use the empty row instead of leaving
+   two-thirds of the dashboard blank. */
+.reference-admin-shell .admin-grid > .admin-panel:last-child{
+  grid-column:1 / -1;
+}
+.reference-admin-shell .admin-grid > .admin-panel:last-child .activity-list.compact{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:22px;
+  row-gap:0;
+}
+.reference-admin-shell .admin-grid > .admin-panel:last-child .activity-list.compact > div{
+  min-width:0;
+  padding:12px 0;
+}
+
+/* Navbar search: the input must never draw its own focus ring outside the
+   rounded search shell. The shell itself owns the focus state. */
+.topbar-search{
+  overflow:hidden;
+}
+.topbar-search input,
+.topbar-search input:hover,
+.topbar-search input:focus,
+.topbar-search input:focus-visible{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+  padding:8px 4px!important;
+}
+.topbar-search button:focus-visible{
+  outline:2px solid color-mix(in srgb,var(--primary) 55%,transparent);
+  outline-offset:-2px;
+}
+
+/* Login / register: give every field a clear rhythm so labels, inputs and
+   utility actions do not feel stuck together. */
+.auth-page>.auth-card{
+  gap:0;
+}
+.auth-card h2{
+  margin-bottom:7px;
+}
+.auth-card>p{
+  margin:0 0 22px;
+}
+.auth-card>label,
+.auth-card .form-grid>label{
+  display:grid;
+  gap:8px;
+  margin:0 0 17px;
+  color:var(--text);
+  font-size:.8rem;
+  font-weight:600;
+}
+.auth-card input,
+.auth-card select,
+.auth-card textarea{
+  min-height:47px;
+  padding:11px 13px;
+  border-radius:12px;
+  border:1px solid #dfe4ee;
+  background:color-mix(in srgb,var(--surface) 97%,var(--surface-2));
+  box-shadow:0 1px 2px rgba(16,24,40,.025);
+}
+:root[data-theme="dark"] .auth-card input,
+:root[data-theme="dark"] .auth-card select,
+:root[data-theme="dark"] .auth-card textarea{
+  border-color:var(--line);
+  background:var(--surface-2);
+}
+.auth-card input:focus,
+.auth-card select:focus,
+.auth-card textarea:focus{
+  border-color:color-mix(in srgb,var(--primary) 52%,#dfe4ee);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 11%,transparent);
+}
+.auth-card .password-field{
+  width:100%;
+}
+.auth-card .password-field input{
+  margin:0;
+}
+.auth-card .form-row-between{
+  margin:0 0 20px;
+  min-height:24px;
+}
+.auth-card .check-filter{
+  gap:8px!important;
+}
+.auth-card .check-filter input{
+  min-height:0;
+  width:14px;
+  height:14px;
+  padding:0;
+}
+.auth-card .button.full{
+  min-height:45px;
+  margin-top:2px;
+}
+.auth-card .auth-switch{
+  margin-top:20px!important;
+  margin-bottom:0;
+}
+
+/* Register: cleaner two-column inputs and a more deliberate fandom selector. */
+.auth-card.wide .form-grid.two{
+  gap:0 16px;
+  align-items:start;
+}
+.auth-card.wide fieldset{
+  margin:4px 0 20px;
+  padding:17px 16px 16px;
+  border-radius:15px;
+  border-color:#e1e5ef;
+  background:color-mix(in srgb,var(--surface) 97%,var(--surface-2));
+}
+:root[data-theme="dark"] .auth-card.wide fieldset{
+  border-color:var(--line);
+  background:var(--surface-2);
+}
+.auth-card.wide fieldset legend{
+  padding:0 7px;
+  font-size:.75rem;
+}
+.auth-card.wide .choice-grid{
+  gap:8px;
+}
+.auth-card.wide .choice-grid button{
+  min-height:36px;
+  padding:8px 12px;
+  border-radius:11px;
+  transition:transform .18s ease,border-color .18s ease,background-color .18s ease,box-shadow .18s ease;
+}
+.auth-card.wide .choice-grid button:hover{
+  transform:translateY(-1px);
+  border-color:color-mix(in srgb,var(--primary) 38%,var(--line));
+  box-shadow:0 5px 14px rgba(81,70,155,.07);
+}
+.auth-card.wide .choice-grid button.active{
+  box-shadow:0 7px 18px color-mix(in srgb,var(--primary) 20%,transparent);
+}
+
+@media(max-width:900px){
+  .reference-admin-shell .admin-grid > .admin-panel:last-child .activity-list.compact{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:650px){
+  .reference-admin-shell .admin-grid > .admin-panel:last-child .activity-list.compact{
+    grid-template-columns:1fr;
+  }
+  .auth-card.wide .form-grid.two{
+    grid-template-columns:1fr;
+  }
+}
