@@ -495,3 +495,66 @@ button,input,select,textarea{max-width:100%;min-width:0}
   .reset-checks{grid-template-columns:1fr!important}
   .recovery-submit,.reset-submit{min-height:44px!important}
 }
+
+
+/* ==========================================================================
+   MOBILE DRAWER FINAL FIX
+   The global desktop sidebar entrance animation animates `transform`, which can
+   override the mobile drawer's translateX(-100%) state. On phone/tablet the
+   drawer must be controlled ONLY by the `.open` class.
+   ========================================================================== */
+@media (max-width:1050px){
+  .desktop-app-sidebar{
+    animation:none !important;
+    transform:translate3d(-105%,0,0) !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    will-change:transform;
+    transition:
+      transform .32s cubic-bezier(.22,1,.36,1),
+      box-shadow .32s ease,
+      visibility 0s linear .32s !important;
+  }
+
+  .desktop-app-sidebar.open{
+    transform:translate3d(0,0,0) !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    box-shadow:20px 0 50px rgba(29,36,64,.18) !important;
+    transition:
+      transform .32s cubic-bezier(.22,1,.36,1),
+      box-shadow .32s ease,
+      visibility 0s linear 0s !important;
+  }
+
+  .sidebar-mobile-close{
+    display:grid !important;
+    place-items:center !important;
+    position:relative;
+    z-index:3;
+    flex:0 0 auto;
+    touch-action:manipulation;
+  }
+
+  .sidebar-backdrop{
+    position:fixed !important;
+    inset:0 !important;
+    z-index:2250 !important;
+    display:block !important;
+    border:0 !important;
+    padding:0 !important;
+    background:rgba(18,21,34,.38) !important;
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+    touch-action:none;
+  }
+}
+
+/* Very small phones: keep the drawer comfortably inside the viewport. */
+@media (max-width:480px){
+  .desktop-app-sidebar{
+    width:min(86vw,310px) !important;
+    max-width:86vw !important;
+  }
+}
+

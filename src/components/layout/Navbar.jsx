@@ -4,7 +4,7 @@ import {
   Sun, Tv, User, Users, X, Zap, Image as ImageIcon, ShoppingBag, MessageCircle, Settings2
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useUi } from '../../context/UiContext';
 import '../../styles/sidebar-logo.css';
@@ -57,6 +57,7 @@ export default function Navbar() {
   const { user, logout } = useAuth();
   const { theme, toggleTheme, fontSize, setFontSize, reducedMotion, setReducedMotion } = useUi();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -91,6 +92,12 @@ export default function Navbar() {
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
+
+  // Mobile drawer must never stay open after navigating to another page.
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname, location.search]);
+
 
   const submitSearch = (e) => {
     e.preventDefault();
