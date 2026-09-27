@@ -121,17 +121,32 @@ export default function Home() {
           <section className="ref-section compact-top">
             <div className="ref-section-head"><div><span className="section-icon purple"><Sparkles size={15}/></span><h2>Explore Universes</h2></div><Link to="/explore">View All Categories <ArrowRight size={14}/></Link></div>
             {loading ? <SkeletonGrid count={5}/> : <Swiper
+              key={`universe-marquee-${universes.length}`}
               className="universe-swiper universe-auto-marquee"
               modules={[Navigation, Autoplay]}
               navigation
               loop
-              speed={4200}
-              autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: false }}
+              loopAdditionalSlides={Math.max(universes.length, 8)}
+              speed={4800}
+              autoplay={{
+                delay: 1,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+                waitForTransition: false,
+                stopOnLastSlide: false
+              }}
+              observer
+              observeParents
+              watchSlidesProgress
+              onSwiper={(swiper) => {
+                window.requestAnimationFrame(() => swiper.autoplay?.start());
+              }}
+              onResize={(swiper) => swiper.autoplay?.start()}
               spaceBetween={14}
               slidesPerView={1.25}
               breakpoints={{500:{slidesPerView:2.15},760:{slidesPerView:3.15},1040:{slidesPerView:5}}}
             >
-              {[...universes, ...universes].map((c,i)=><SwiperSlide key={`${c._id || c.slug}-${i}`}><Link className="reference-universe-card" to={`/category/${c.slug}`}><img src={c.bannerImage || fallbackHero} alt={c.name}/><div className="universe-card-shade"/><div className="universe-card-copy"><span className="universe-round-icon"><Sparkles size={13}/></span><strong>{c.name}</strong><small>{c.stats?.contentCount ? `${c.stats.contentCount}+ stories` : c.tagline || 'Explore community'}</small></div><span className="universe-arrow"><ArrowRight size={14}/></span></Link></SwiperSlide>)}
+              {[...universes, ...universes, ...universes].map((c,i)=><SwiperSlide key={`${c._id || c.slug}-${i}`}><Link className="reference-universe-card" to={`/category/${c.slug}`}><img src={c.bannerImage || fallbackHero} alt={c.name}/><div className="universe-card-shade"/><div className="universe-card-copy"><span className="universe-round-icon"><Sparkles size={13}/></span><strong>{c.name}</strong><small>{c.stats?.contentCount ? `${c.stats.contentCount}+ stories` : c.tagline || 'Explore community'}</small></div><span className="universe-arrow"><ArrowRight size={14}/></span></Link></SwiperSlide>)}
             </Swiper>}
           </section>
 

@@ -25,4 +25,6 @@
 @media(max-width:1180px){.fh-featured-layout{grid-template-columns:minmax(0,1fr) 240px}}
 @media(max-width:900px){.fh-featured-layout{grid-template-columns:1fr}.fh-anime-spotlight{min-height:190px;background-position:center 28%}.fh-spotlight-copy h3{font-size:1rem}.fh-spotlight-copy p{max-width:520px}}
 @media(max-width:520px){.fh-featured-layout{gap:10px}.fh-featured-swiper{padding-top:6px!important}.fh-anime-spotlight{min-height:178px;border-radius:12px}.fh-spotlight-copy{left:11px;right:11px;bottom:10px}}
-@media(prefers-reduced-motion:reduce){.fh-anime-spotlight,.fh-card-play,.fh-spotlight-cta svg{transition:none!important}}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+

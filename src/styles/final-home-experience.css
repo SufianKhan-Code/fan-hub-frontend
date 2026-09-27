@@ -379,18 +379,6 @@
 }
 
 /* Accessibility: respect reduced-motion ----------------------------------- */
-@media(prefers-reduced-motion:reduce){
-  .reference-home *,
-  .reference-home *::before,
-  .reference-home *::after{
-    animation-duration:.001ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.001ms!important;
-    scroll-behavior:auto!important;
-  }
-  .reference-home :is(
-    .reference-universe-card,.fh-community-post,.fh-community-banner,.fh-feature-card,
-    .fh-anime-spotlight,.media-card,.fh-story-lead,.fh-story-editorial,.release-card,
-    .event-card,.fh-collector-feature,.fh-collector-mini,.reference-sitemap-grid>div,.right-rail-card
-  ):hover{transform:none!important}
-}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+

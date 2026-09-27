@@ -1,0 +1,414 @@
+/* Fan Hub Plus — Final multimedia modal sizing/details fix */
+
+/* Full-screen overlay */
+.media-modal-backdrop{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:99999 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:22px !important;
+  overflow:hidden !important;
+  background:rgba(4,6,12,.80) !important;
+  backdrop-filter:blur(14px);
+}
+
+/*
+  The modal itself stays centered and never lets the player consume
+  the complete viewport. The details area always keeps usable space.
+*/
+.media-modal{
+  position:relative;
+  width:min(860px, calc(100vw - 44px));
+  max-width:860px;
+  max-height:calc(100vh - 44px);
+  margin:auto;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  background:var(--surface, #0b0d13);
+  color:var(--text, #fff);
+  box-shadow:0 28px 100px rgba(0,0,0,.58);
+}
+
+/* Close button remains visible above every media type */
+.media-modal-close{
+  position:absolute !important;
+  top:14px !important;
+  right:14px !important;
+  z-index:60 !important;
+  width:42px !important;
+  height:42px !important;
+  display:grid !important;
+  place-items:center !important;
+  padding:0 !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  border-radius:13px !important;
+  background:rgba(8,10,16,.86) !important;
+  color:#fff !important;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 26px rgba(0,0,0,.30);
+}
+
+/* Viewer is capped so title/description/source/rating stay visible */
+.media-viewer{
+  flex:0 0 auto;
+  width:100%;
+  max-height:46vh;
+  overflow:hidden;
+  background:#000;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+/* Same dimensions for YouTube embeds AND local MP4 explainers */
+.media-player-frame{
+  position:relative;
+  width:100%;
+  height:clamp(250px, 42vh, 390px);
+  max-height:46vh;
+  background:#000;
+  overflow:hidden;
+}
+
+.media-player-frame iframe,
+.media-player-frame video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  border:0;
+  background:#000;
+}
+
+.media-player-frame video{
+  object-fit:contain;
+}
+
+/* Details section gets the remaining modal height and scrolls independently */
+.media-modal-copy{
+  flex:1 1 auto;
+  min-height:175px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  display:grid;
+  align-content:start;
+  gap:14px;
+  padding:20px 24px 24px;
+  background:var(--surface, #0b0d13);
+  scrollbar-width:thin;
+  scrollbar-color:rgba(142,92,246,.7) transparent;
+}
+
+.media-modal-copy::-webkit-scrollbar{
+  width:7px;
+}
+
+.media-modal-copy::-webkit-scrollbar-thumb{
+  border-radius:999px;
+  background:rgba(142,92,246,.62);
+}
+
+.media-modal-copy::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.media-modal-heading-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.media-modal-heading-row > div:first-child{
+  min-width:0;
+  flex:1;
+}
+
+.media-modal-copy .eyebrow{
+  display:block;
+  margin:0 0 6px;
+  color:var(--primary, #8b5cf6);
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.media-modal-copy h2{
+  margin:0;
+  max-width:720px;
+  color:var(--text, #fff);
+  font-size:clamp(1.4rem, 2.5vw, 2rem);
+  line-height:1.10;
+  letter-spacing:-.035em;
+}
+
+.media-modal-description{
+  margin:0;
+  max-width:760px;
+  color:var(--muted, #a1a1aa);
+  font-size:.90rem;
+  line-height:1.62;
+}
+
+.media-source-note{
+  display:grid;
+  gap:7px;
+  padding:13px 14px;
+  border:1px solid var(--line, rgba(255,255,255,.10));
+  border-radius:14px;
+  background:var(--surface-2, rgba(255,255,255,.03));
+}
+
+.media-source-note > div{
+  display:grid;
+  gap:7px;
+}
+
+.media-source-note a{
+  width:max-content;
+  max-width:100%;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:var(--primary, #8b5cf6);
+  font-size:.79rem;
+  font-weight:800;
+}
+
+.media-source-note small{
+  color:var(--muted, #a1a1aa);
+  font-size:.70rem;
+  line-height:1.5;
+}
+
+.media-modal-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  padding-bottom:2px;
+}
+
+/* Audio */
+.media-audio-view{
+  display:grid;
+  grid-template-columns:minmax(240px, 310px) minmax(0, 1fr);
+  align-items:stretch;
+  min-height:290px;
+  max-height:42vh;
+  background:
+    radial-gradient(circle at top left, rgba(111,86,255,.20), transparent 30%),
+    linear-gradient(135deg, rgba(19,23,35,.98), rgba(9,11,18,.98));
+}
+
+.media-audio-art{
+  position:relative;
+  min-height:290px;
+  overflow:hidden;
+  background:#0b0d14;
+}
+
+.media-audio-art img,
+.media-fallback-view img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.media-audio-art::after,
+.media-fallback-view::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(8,10,15,.05), rgba(8,10,15,.40));
+}
+
+.media-audio-placeholder{
+  min-height:290px;
+  display:grid;
+  place-items:center;
+  color:#bcaeff;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(127,90,240,.24), transparent 35%),
+    #0c0e16;
+}
+
+.media-audio-overlay{
+  position:absolute;
+  left:16px;
+  bottom:16px;
+  z-index:2;
+}
+
+.media-type-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 11px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(7,9,14,.72);
+  color:#fff;
+  font-size:.72rem;
+  font-weight:800;
+  backdrop-filter:blur(10px);
+}
+
+.media-audio-player{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:11px;
+  min-width:0;
+  padding:26px 28px;
+}
+
+.media-audio-player > span{
+  color:var(--primary, #8b5cf6);
+  font-size:.65rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.media-audio-player > strong{
+  color:#fff;
+  font-size:clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height:1.08;
+  letter-spacing:-.03em;
+}
+
+.media-audio-player audio{
+  width:100%;
+  margin-top:5px;
+}
+
+/* Gallery */
+.media-gallery-view{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:8px;
+  max-height:42vh;
+  padding:8px;
+  overflow-y:auto;
+  background:#080a10;
+}
+
+.media-gallery-item{
+  min-height:170px;
+  margin:0;
+  overflow:hidden;
+  border-radius:14px;
+  background:#0e1119;
+}
+
+.media-gallery-item.featured{
+  grid-column:1 / -1;
+  min-height:260px;
+}
+
+.media-gallery-item img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.media-fallback-view{
+  position:relative;
+  height:clamp(250px, 40vh, 370px);
+  max-height:42vh;
+  background:#0d0f18;
+}
+
+/* Tablet / smaller desktop */
+@media (max-width:900px){
+  .media-modal-backdrop{
+    padding:14px !important;
+  }
+
+  .media-modal{
+    width:min(820px, calc(100vw - 28px));
+    max-height:calc(100vh - 28px);
+    border-radius:20px;
+  }
+
+  .media-player-frame{
+    height:clamp(230px, 39vh, 340px);
+  }
+
+  .media-modal-copy{
+    min-height:165px;
+    padding:18px 20px 22px;
+  }
+}
+
+/* Mobile */
+@media (max-width:680px){
+  .media-modal-backdrop{
+    align-items:center !important;
+    padding:10px !important;
+  }
+
+  .media-modal{
+    width:calc(100vw - 20px);
+    max-height:calc(100vh - 20px);
+    border-radius:18px;
+  }
+
+  .media-player-frame{
+    height:auto;
+    aspect-ratio:16 / 9;
+    max-height:38vh;
+  }
+
+  .media-modal-copy{
+    min-height:190px;
+    padding:17px 16px 20px;
+  }
+
+  .media-modal-heading-row{
+    gap:10px;
+  }
+
+  .media-modal-copy h2{
+    font-size:1.35rem;
+  }
+
+  .media-audio-view{
+    grid-template-columns:1fr;
+    max-height:none;
+  }
+
+  .media-audio-art,
+  .media-audio-art img,
+  .media-audio-placeholder{
+    min-height:210px;
+  }
+
+  .media-audio-player{
+    padding:20px 18px 22px;
+  }
+
+  .media-gallery-view{
+    grid-template-columns:1fr;
+    max-height:38vh;
+  }
+
+  .media-gallery-item,
+  .media-gallery-item.featured{
+    grid-column:auto;
+    min-height:190px;
+  }
+
+  .media-fallback-view{
+    height:240px;
+  }
+}

@@ -38,9 +38,11 @@ import AdminFeedback from './pages/admin/AdminFeedback';
 import AdminChatbot from './pages/admin/AdminChatbot';
 import AdminAnalytics from './pages/admin/AdminAnalytics';
 import MotionEnhancer from './components/common/MotionEnhancer';
+import ScrollToTop from './components/common/ScrollToTop';
 
 export default function App(){
  return <>
+  <ScrollToTop/>
   <MotionEnhancer/>
   <Routes>
   <Route element={<AppShell/>}>

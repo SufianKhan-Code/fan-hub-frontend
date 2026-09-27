@@ -62,8 +62,6 @@
   .topbar-wordmark-logo{width:92px}
 }
 
-@media(prefers-reduced-motion:reduce){
-  .topbar-wordmark-logo{transition:none!important}
-  .topbar-wordmark-link:hover .topbar-wordmark-logo,
-  .topbar-wordmark-link:focus-visible .topbar-wordmark-logo{transform:none}
-}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+

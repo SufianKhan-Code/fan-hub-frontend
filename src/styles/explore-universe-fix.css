@@ -36,8 +36,20 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .universe-swiper.universe-auto-marquee .swiper-wrapper {
-    transition-duration: 0ms !important;
-  }
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+
+
+
+/* Continuous autoplay hardening ------------------------------------------------
+   Keep Swiper moving smoothly from the moment Home mounts. */
+.universe-swiper.universe-auto-marquee .swiper-wrapper{
+  transition-timing-function:linear !important;
+  will-change:transform;
+}
+.universe-swiper.universe-auto-marquee .swiper-slide{
+  flex-shrink:0;
+}
+.universe-swiper.universe-auto-marquee:hover .swiper-wrapper{
+  animation-play-state:running !important;
 }

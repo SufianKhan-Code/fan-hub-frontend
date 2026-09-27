@@ -63,6 +63,7 @@ export default function MotionEnhancer() {
 
   useEffect(() => {
     const root = document.documentElement;
+
     if (reducedMotion) {
       root.classList.add('motion-reduced');
       document.querySelectorAll(SELECTORS).forEach((el) => {
@@ -73,33 +74,77 @@ export default function MotionEnhancer() {
     }
 
     root.classList.remove('motion-reduced');
+
+    const seen = new WeakSet();
     let observer;
-    let raf = requestAnimationFrame(() => {
-      const items = Array.from(document.querySelectorAll(SELECTORS));
-      items.forEach((el, index) => {
-        el.classList.add('motion-watch');
-        el.classList.remove('motion-inview');
-        el.style.setProperty('--motion-delay', `${Math.min((index % 6) * 45, 225)}ms`);
-      });
+    let mutationObserver;
+    let rafId = 0;
+    let sequence = 0;
 
-      observer = new IntersectionObserver((entries) => {
+    const prepare = (el) => {
+      if (!el || seen.has(el)) return;
+
+      seen.add(el);
+      const delay = Math.min((sequence % 5) * 55, 220);
+      sequence += 1;
+
+      el.style.setProperty('--motion-delay', `${delay}ms`);
+      el.classList.add('motion-watch');
+
+      // Elements already well inside the viewport still get a short entrance,
+      // but are revealed on the next frame to prevent layout flashes.
+      observer.observe(el);
+    };
+
+    const scan = (scope = document) => {
+      scope.querySelectorAll?.(SELECTORS).forEach(prepare);
+
+      if (scope.nodeType === 1 && scope.matches?.(SELECTORS)) {
+        prepare(scope);
+      }
+    };
+
+    observer = new IntersectionObserver(
+      (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('motion-inview');
-            observer?.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -5% 0px'
-      });
+          if (!entry.isIntersecting) return;
 
-      items.forEach((el) => observer.observe(el));
+          requestAnimationFrame(() => {
+            entry.target.classList.add('motion-inview');
+          });
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.06,
+        rootMargin: '0px 0px -3% 0px'
+      }
+    );
+
+    // Initial content.
+    rafId = requestAnimationFrame(() => scan(document));
+
+    // API-loaded cards/sections arrive after the first paint. Observe them too.
+    mutationObserver = new MutationObserver((mutations) => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) scan(node);
+          });
+        });
+      });
+    });
+
+    mutationObserver.observe(document.getElementById('root') || document.body, {
+      childList: true,
+      subtree: true
     });
 
     return () => {
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(rafId);
       observer?.disconnect();
+      mutationObserver?.disconnect();
     };
   }, [location.pathname, location.search, reducedMotion]);
 

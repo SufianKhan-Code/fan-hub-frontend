@@ -38,8 +38,6 @@
   .sidebar-brand-logo{width:42px;height:42px}
 }
 
-@media(prefers-reduced-motion:reduce){
-  .sidebar-brand-logo{transition:none!important}
-  .sidebar-logo-image-link:hover .sidebar-brand-logo,
-  .sidebar-logo-image-link:focus-visible .sidebar-brand-logo{transform:none}
-}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+

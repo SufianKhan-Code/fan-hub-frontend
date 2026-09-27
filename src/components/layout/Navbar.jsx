@@ -65,6 +65,33 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 1050) setOpen(false);
+    };
+
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const submitSearch = (e) => {
     e.preventDefault();
     if (!q.trim()) return;
@@ -119,7 +146,7 @@ export default function Navbar() {
 
     <header className={`top-appbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="top-appbar-inner">
-        <button className="topbar-menu" onClick={() => setOpen(true)} aria-label="Open navigation"><Menu size={20}/></button>
+        <button className="topbar-menu" onClick={() => setOpen(true)} aria-label="Open navigation" aria-expanded={open}><Menu size={20}/></button>
         <Link className="topbar-brand topbar-wordmark-link" to="/" aria-label="Fan Hub Plus home">
           <img src="/images/fanhub-wordmark-light.png" alt="Fan Hub Plus" className="topbar-wordmark-logo topbar-wordmark-light" />
           <img src="/images/fanhub-wordmark-dark.png" alt="" aria-hidden="true" className="topbar-wordmark-logo topbar-wordmark-dark" />

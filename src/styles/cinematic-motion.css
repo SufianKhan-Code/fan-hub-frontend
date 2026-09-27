@@ -1,0 +1,375 @@
+/* ========================================================================== 
+   FAN HUB PLUS — CINEMATIC MOTION LAYER
+   Loaded after responsive-overhaul.css. Motion/effects only: no page geometry,
+   data, navigation, API or content rules are changed here.
+   ========================================================================== */
+
+:root{
+  --motion-ease:cubic-bezier(.16,1,.3,1);
+  --motion-soft:cubic-bezier(.22,1,.36,1);
+  --motion-shadow:0 16px 42px rgba(35,39,73,.13);
+  --motion-shadow-strong:0 22px 56px rgba(35,39,73,.18);
+  --motion-glow:rgba(123,92,246,.16);
+  --motion-pink-glow:rgba(236,72,153,.12);
+}
+
+:root[data-theme="dark"]{
+  --motion-shadow:0 18px 46px rgba(0,0,0,.34);
+  --motion-shadow-strong:0 24px 64px rgba(0,0,0,.45);
+  --motion-glow:rgba(139,92,246,.18);
+  --motion-pink-glow:rgba(236,72,153,.13);
+}
+
+/* Route/page settling ----------------------------------------------------- */
+.page-motion-stage{
+  transform-origin:50% 0;
+  will-change:transform,opacity;
+}
+.route-stage{isolation:isolate}
+
+/* Scroll-story engine ---------------------------------------------------- */
+.motion-watch{
+  opacity:0;
+  transform:translate3d(0,24px,0) scale(.992);
+  transition:
+    opacity .62s var(--motion-soft) var(--motion-delay,0ms),
+    transform .78s var(--motion-ease) var(--motion-delay,0ms),
+    box-shadow .36s ease,
+    border-color .36s ease;
+  will-change:opacity,transform;
+}
+.motion-watch.motion-from-left{transform:translate3d(-28px,10px,0) scale(.993)}
+.motion-watch.motion-from-right{transform:translate3d(28px,10px,0) scale(.993)}
+.motion-watch.motion-from-up{transform:translate3d(0,24px,0) scale(.992)}
+.motion-watch.motion-inview{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+}
+
+/* Section storytelling: a subtle light arrives with the section. */
+.motion-story-block{
+  position:relative;
+  isolation:isolate;
+}
+.motion-story-block.motion-inview{
+  animation:fhStorySettle .9s var(--motion-ease) both;
+}
+@keyframes fhStorySettle{
+  0%{filter:saturate(.94)}
+  55%{filter:saturate(1.04)}
+  100%{filter:saturate(1)}
+}
+
+/* Premium card depth + animated shade ----------------------------------- */
+.motion-fx-card{
+  --motion-x:50%;
+  --motion-y:50%;
+  position:relative;
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  transition:
+    transform .48s var(--motion-ease),
+    box-shadow .48s var(--motion-ease),
+    border-color .38s ease,
+    filter .38s ease !important;
+}
+.motion-fx-card:not(.release-card):not(.category-card)::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:8;
+  border-radius:inherit;
+  pointer-events:none;
+  opacity:0;
+  background:
+    radial-gradient(240px circle at var(--motion-x) var(--motion-y),
+      rgba(255,255,255,.20),
+      rgba(143,97,255,.08) 34%,
+      transparent 67%);
+  mix-blend-mode:soft-light;
+  transition:opacity .34s ease;
+}
+:root[data-theme="dark"] .motion-fx-card:not(.release-card):not(.category-card)::after{
+  background:
+    radial-gradient(260px circle at var(--motion-x) var(--motion-y),
+      rgba(255,255,255,.13),
+      rgba(141,87,255,.10) 38%,
+      transparent 70%);
+  mix-blend-mode:screen;
+}
+.motion-fx-card.motion-pointer-active:not(.release-card):not(.category-card)::after,
+.motion-fx-card:not(.release-card):not(.category-card):hover::after{opacity:1}
+
+@media(hover:hover) and (pointer:fine){
+  .motion-fx-card:hover{
+    transform:translate3d(0,-7px,0) scale(1.012) !important;
+    box-shadow:var(--motion-shadow-strong) !important;
+    filter:saturate(1.035);
+  }
+  .right-rail-card.motion-fx-card:hover,
+  .dashboard-panel.motion-fx-card:hover,
+  .admin-panel.motion-fx-card:hover{
+    transform:translate3d(0,-4px,0) scale(1.004) !important;
+  }
+}
+
+/* Image storytelling: the frame and image move at different speeds. */
+.reference-universe-card img,
+.featured-anime-card img,
+.content-card img,
+.article-card img,
+.media-card img,
+.merch-card img,
+.event-card img,
+.character-card img,
+.release-card img,
+.trending-row img,
+.top-character-row img{
+  transform:translateZ(0) scale(1.001);
+  transition:transform .8s var(--motion-ease),filter .5s ease !important;
+}
+@media(hover:hover) and (pointer:fine){
+  .reference-universe-card:hover img,
+  .featured-anime-card:hover img,
+  .content-card:hover img,
+  .article-card:hover img,
+  .media-card:hover img,
+  .merch-card:hover img,
+  .event-card:hover img,
+  .character-card:hover img,
+  .release-card:hover img{
+    transform:translateZ(0) scale(1.075) !important;
+    filter:saturate(1.06) contrast(1.015);
+  }
+}
+
+/* Home hero: same motion language as the deployed experience, only smoother. */
+.reference-hero{
+  animation:fhCinematicHeroIn .82s var(--motion-ease) both !important;
+  transform-origin:50% 30%;
+}
+@keyframes fhCinematicHeroIn{
+  from{opacity:0;transform:translate3d(0,16px,0) scale(.988)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+.reference-hero:not(.has-action-video)::before{
+  animation:fhCinematicHeroPan 22s ease-in-out infinite alternate !important;
+  will-change:background-position,transform;
+}
+@keyframes fhCinematicHeroPan{
+  0%{background-position:48% 48%;transform:scale(1.025)}
+  100%{background-position:58% 52%;transform:scale(1.075)}
+}
+.reference-hero::after{
+  animation:fhCinematicHeroLight 7.5s ease-in-out infinite alternate !important;
+}
+@keyframes fhCinematicHeroLight{
+  from{opacity:.66}
+  to{opacity:1}
+}
+.reference-kicker{
+  animation:fhCinematicFloat 4.8s ease-in-out infinite !important;
+}
+.hero-quote-chip{
+  animation:fhCinematicQuote 6.2s ease-in-out infinite !important;
+}
+@keyframes fhCinematicFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes fhCinematicQuote{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(.6deg)}}
+.reference-hero h1 span{
+  background-size:220% 220% !important;
+  animation:fhCinematicGradient 8s ease infinite !important;
+}
+@keyframes fhCinematicGradient{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+
+/* Header/nav micro-interactions ------------------------------------------ */
+.top-appbar{animation:fhChromeDrop .62s var(--motion-ease) both !important}
+.desktop-app-sidebar{animation:fhChromeSlide .7s var(--motion-ease) both !important}
+@keyframes fhChromeDrop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes fhChromeSlide{from{opacity:.25;transform:translateX(-16px)}to{opacity:1;transform:none}}
+
+.sidebar-link,
+.topbar-icon,
+.theme-pill,
+.topbar-settings-wrap button,
+.join-chip,
+.topbar-account-button,
+.topbar-search{
+  transition:
+    transform .34s var(--motion-ease),
+    box-shadow .34s ease,
+    background-color .28s ease,
+    border-color .28s ease,
+    color .25s ease !important;
+}
+@media(hover:hover) and (pointer:fine){
+  .sidebar-link:hover{transform:translateX(5px) !important}
+  .sidebar-link:hover svg{transform:scale(1.13) rotate(-4deg) !important}
+  .topbar-icon:hover,.theme-pill:hover,.topbar-settings-wrap button:hover{transform:translateY(-2px) scale(1.025) !important}
+  .join-chip:hover{transform:translateY(-2px) scale(1.025) !important}
+  .topbar-search:focus-within{transform:translateY(-1px) scale(1.002) !important}
+}
+
+/* Buttons: gloss sweep and responsive tactile movement ------------------- */
+.ref-primary-btn,.ref-secondary-btn,.button,.outline-micro-button,
+.reference-promo-banner a,.reference-sitemap-strip a,.rail-quick-card button{
+  transition:transform .34s var(--motion-ease),box-shadow .34s ease,filter .34s ease !important;
+}
+.ref-primary-btn::after,.join-chip::after,.reference-promo-banner a::after{
+  transition:left .78s var(--motion-ease),opacity .3s ease !important;
+}
+@media(hover:hover) and (pointer:fine){
+  .ref-primary-btn:hover,.button.primary:hover,.reference-promo-banner a:hover{
+    transform:translateY(-3px) scale(1.012) !important;
+    box-shadow:0 14px 34px rgba(109,93,252,.22);
+  }
+  .ref-secondary-btn:hover,.outline-micro-button:hover{
+    transform:translateY(-2px) scale(1.008) !important;
+  }
+}
+button:active,.button:active,.ref-primary-btn:active,.ref-secondary-btn:active{
+  transform:translateY(0) scale(.975) !important;
+  transition-duration:.11s !important;
+}
+
+/* Carousels --------------------------------------------------------------- */
+.swiper-slide{
+  transition:opacity .5s ease,transform .58s var(--motion-ease) !important;
+}
+.swiper-button-next,.swiper-button-prev{
+  transition:transform .32s var(--motion-ease),box-shadow .32s ease,opacity .24s ease !important;
+}
+@media(hover:hover) and (pointer:fine){
+  .swiper-button-next:hover,.swiper-button-prev:hover{
+    transform:scale(1.12) !important;
+    box-shadow:0 10px 26px rgba(38,45,76,.22) !important;
+  }
+}
+.universe-auto-marquee .swiper-wrapper{
+  transition-timing-function:linear !important;
+}
+
+/* Headings tell the page story before the cards arrive. */
+.ref-section-head h2,.section-heading h2,.admin-page-head h1,.panel-head h2{
+  transition:letter-spacing .5s var(--motion-ease),color .35s ease !important;
+}
+.ref-section-head.motion-inview h2,
+.admin-page-head.motion-inview h1{
+  animation:fhHeadingSettle .72s var(--motion-ease) both;
+}
+@keyframes fhHeadingSettle{from{letter-spacing:.02em;opacity:.65}to{letter-spacing:inherit;opacity:1}}
+
+/* Forms feel responsive rather than abrupt. */
+input,select,textarea{
+  transition:border-color .3s ease,box-shadow .34s ease,background-color .3s ease,transform .3s var(--motion-ease) !important;
+}
+input:focus,select:focus,textarea:focus{
+  transform:translateY(-1px) !important;
+  box-shadow:0 0 0 4px rgba(108,92,231,.09),0 10px 30px rgba(70,63,150,.06) !important;
+}
+
+/* Dashboard/admin storytelling ------------------------------------------- */
+.dashboard-stats article.motion-inview,
+.admin-metrics article.motion-inview,
+.analytics-highlight-grid article.motion-inview{
+  animation:fhMetricPop .72s var(--motion-ease) both;
+  animation-delay:var(--motion-delay,0ms);
+}
+@keyframes fhMetricPop{
+  0%{opacity:0;transform:translateY(16px) scale(.96)}
+  70%{opacity:1;transform:translateY(-2px) scale(1.008)}
+  100%{opacity:1;transform:none}
+}
+.admin-panel.motion-watch:not(.motion-inview) .analytics-trend-track i,
+.admin-panel.motion-watch:not(.motion-inview) .popularity-bars i{
+  transform:scaleY(0);
+}
+.analytics-trend-track i,.popularity-bars i{
+  transform-origin:bottom;
+  transition:transform .9s var(--motion-ease),height .5s var(--motion-ease) !important;
+}
+.admin-panel.motion-inview .analytics-trend-track i,
+.admin-panel.motion-inview .popularity-bars i{
+  transform:scaleY(1);
+}
+.admin-table tbody tr{
+  transition:background-color .3s ease,transform .32s var(--motion-ease),box-shadow .32s ease !important;
+}
+@media(hover:hover) and (pointer:fine){
+  .admin-table tbody tr:hover{
+    transform:translateX(3px);
+    box-shadow:-3px 0 0 color-mix(in srgb,var(--primary) 60%,transparent);
+  }
+}
+
+/* Article storytelling ---------------------------------------------------- */
+.article-reading-card.motion-inview .article-rich-content>p:first-of-type::first-letter{
+  animation:fhDropCap .75s var(--motion-ease) both;
+}
+@keyframes fhDropCap{from{opacity:0;transform:translateY(8px) scale(.9)}to{opacity:1;transform:none}}
+.article-timeline.motion-inview .timeline-item::before{
+  animation:fhTimelinePulse 2.8s ease-in-out infinite;
+}
+@keyframes fhTimelinePulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(108,92,231,.08)}
+  50%{box-shadow:0 0 0 7px rgba(108,92,231,0)}
+}
+
+/* Modal/chatbot entrances ------------------------------------------------- */
+.crud-modal,.submission-review,.media-modal{
+  transform-origin:50% 44%;
+  animation:fhCinematicModal .44s var(--motion-ease) both !important;
+}
+@keyframes fhCinematicModal{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.chatbot-panel{
+  animation:fhCinematicChat .45s var(--motion-ease) both !important;
+}
+@keyframes fhCinematicChat{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:none}}
+.chat-message{animation:fhCinematicMessage .36s var(--motion-ease) both !important}
+@keyframes fhCinematicMessage{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
+.chatbot-fab{
+  transition:transform .4s var(--motion-ease),box-shadow .4s ease !important;
+}
+@media(hover:hover) and (pointer:fine){
+  .chatbot-fab:hover{transform:translateY(-5px) rotate(-3deg) scale(1.045) !important}
+}
+
+/* Footer arrives softly rather than snapping into place. */
+.reference-footer,.fhp-footer{
+  transition:opacity .55s ease,transform .7s var(--motion-ease) !important;
+}
+.footer-inline-links a,.footer-socials span{
+  transition:transform .34s var(--motion-ease),color .28s ease !important;
+}
+
+/* Mobile: keep the experience smooth, never heavy. ----------------------- */
+@media(max-width:760px){
+  .motion-watch,
+  .motion-watch.motion-from-left,
+  .motion-watch.motion-from-right,
+  .motion-watch.motion-from-up{
+    transform:translate3d(0,14px,0) scale(.996);
+    transition-duration:.5s,.58s,.3s,.3s;
+  }
+  .motion-watch.motion-inview{transform:none}
+  .motion-fx-card:not(.release-card):not(.category-card)::after{display:none}
+  .reference-hero:not(.has-action-video)::before{animation-duration:28s !important}
+  .reference-kicker,.hero-quote-chip{animation-duration:6s !important}
+}
+
+/* Explicit in-app Reduce Motion setting always wins. */
+:root[data-reduced-motion="true"] *,
+:root[data-reduced-motion="true"] *::before,
+:root[data-reduced-motion="true"] *::after,
+.motion-reduced *,
+.motion-reduced *::before,
+.motion-reduced *::after{
+  animation-duration:.001ms !important;
+  animation-iteration-count:1 !important;
+  transition-duration:.001ms !important;
+  scroll-behavior:auto !important;
+}
+:root[data-reduced-motion="true"] .motion-watch,
+.motion-reduced .motion-watch{
+  opacity:1 !important;
+  transform:none !important;
+}

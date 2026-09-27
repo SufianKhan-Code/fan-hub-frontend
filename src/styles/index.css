@@ -19,7 +19,9 @@
 @media(max-width:1100px){.desktop-nav{display:none}.mobile-menu-button{display:grid}.mobile-nav{display:grid;gap:7px;padding:12px 20px 20px;background:var(--surface);border-top:1px solid var(--line)}.mobile-nav>a{padding:9px 0;border-bottom:1px solid var(--line)}.mobile-fandom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.mobile-fandom-grid a{padding:8px;background:var(--surface-2);border-radius:8px;text-align:center;font-size:.72rem}.mobile-auth{display:flex;gap:8px;margin-top:7px}.hero-layout{grid-template-columns:1fr;gap:50px}.hero-copy{text-align:center}.hero-copy>p{margin-inline:auto}.hero-actions,.hero-trust{justify-content:center}.hero-search{max-width:720px;margin-inline:auto;margin-top:30px}.hero-carousel-wrap{max-width:720px;margin:auto;width:100%}.hero-slide{height:480px}.category-grid{grid-template-columns:repeat(2,1fr)}.card-grid,.card-grid.four{grid-template-columns:repeat(2,1fr)}.character-grid{grid-template-columns:repeat(3,1fr)}.anime-showcase{grid-template-columns:1fr}.anime-stack{grid-template-columns:repeat(2,1fr)}.community-layout{grid-template-columns:1fr}.home-sitemap,.sitemap-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1.6fr repeat(2,1fr)}.footer-grid>div:nth-child(4),.footer-grid>div:nth-child(5){margin-top:10px}.product-detail{gap:30px}.dashboard-stats,.admin-metrics,.analytics-highlight-grid{grid-template-columns:repeat(2,1fr)}.dashboard-grid,.admin-grid{grid-template-columns:repeat(2,1fr)}.submission-admin-grid,.faq-admin-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:860px){.accessibility-inner>span{display:none}.desktop-auth{display:none}.navbar-shell{height:70px}.brand-copy strong{font-size:1rem}.brand-mark{width:38px;height:38px}.section{padding:64px 0}.hero-section{padding:60px 0 70px}.hero-copy h1{font-size:4rem}.hero-slide{height:430px}.article-grid,.card-grid.three{grid-template-columns:repeat(2,1fr)}.character-grid{grid-template-columns:repeat(2,1fr)}.explore-layout{grid-template-columns:1fr}.desktop-filters{display:none}.mobile-filter-button{display:inline-flex}.detail-layout{grid-template-columns:1fr}.detail-aside{grid-template-columns:repeat(2,1fr)}.character-detail-layout{grid-template-columns:240px 1fr;gap:30px}.character-portrait img{height:370px}.character-detail-copy h1{font-size:3rem}.product-detail{grid-template-columns:1fr}.product-main-image{height:540px}.feedback-layout{grid-template-columns:1fr}.auth-page{grid-template-columns:1fr}.auth-visual{padding:55px 30px}.auth-page>.auth-card{padding:50px 30px}.auth-visual h1{font-size:3rem}.profile-layout{grid-template-columns:1fr}.profile-preview{position:static}.admin-shell{display:block}.admin-sidebar{position:fixed;z-index:4000;left:0;top:0;width:260px;transform:translateX(-100%);transition:.25s;height:100vh}.admin-sidebar.open{transform:none}.admin-sidebar-head button{display:grid}.admin-overlay{position:fixed;inset:0;z-index:3999;background:rgba(0,0,0,.5)}.admin-content{padding:20px}.admin-menu-toggle{display:inline-flex;margin:15px 20px 0;padding:9px 12px;border-radius:10px;background:#101426;color:#fff}.admin-page-head{align-items:flex-start}.calendar-day{min-height:110px}.calendar-event strong{font-size:.56rem}.footer-grid{grid-template-columns:repeat(2,1fr)}.footer-brand{grid-column:span 2}}
 @media(max-width:620px){.container{width:min(100% - 24px,1200px)}.accessibility-actions button:last-child{display:none}.nav-actions{gap:5px}.nav-actions>.icon-button:nth-child(1){display:none}.hero-copy h1{font-size:3.15rem}.hero-copy>p{font-size:.95rem}.hero-actions{align-items:stretch}.hero-actions .button{flex:1}.hero-search button{display:none}.hero-slide{height:380px;border-radius:24px}.hero-swiper{border-radius:24px}.floating-chip{display:none}.section-heading{align-items:flex-start;flex-direction:column;gap:10px}.section-heading h2{font-size:2.1rem}.category-grid,.card-grid,.card-grid.three,.card-grid.four,.article-grid,.character-grid,.home-sitemap,.sitemap-grid{grid-template-columns:1fr}.category-card{height:300px}.anime-stack{grid-template-columns:1fr}.anime-lead{min-height:520px}.anime-lead h2{font-size:1.8rem}.community-cards{grid-template-columns:1fr}.community-copy h2{font-size:2.3rem}.footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}.footer-bottom{flex-direction:column}.mobile-fandom-grid{grid-template-columns:repeat(2,1fr)}.global-search-bar .button{display:none}.page-hero,.page-hero.compact{padding:42px 0}.page-hero h1{font-size:2.7rem}.category-hero,.detail-hero,.event-detail-hero{min-height:560px}.category-hero-copy h1,.detail-hero-copy h1{font-size:3.4rem}.detail-aside{grid-template-columns:1fr}.character-detail-layout{grid-template-columns:1fr}.character-portrait{max-width:280px}.character-detail-copy h1{font-size:2.6rem}.article-head{padding-top:40px}.article-cover{width:100%;border-radius:0}.article-cover img{height:55vh}.article-byline{gap:9px}.product-main-image{height:440px}.form-grid.two,.form-grid.three{grid-template-columns:1fr}.feedback-cards{grid-template-columns:1fr}.calendar-toolbar{flex-wrap:wrap}.calendar-toolbar h2{min-width:180px}.calendar-toolbar select{margin-left:0;width:100%}.calendar-grid{overflow-x:auto;grid-template-columns:repeat(7,minmax(105px,1fr))}.dashboard-stats,.admin-metrics,.analytics-highlight-grid,.dashboard-grid,.admin-grid,.submission-admin-grid,.faq-admin-grid{grid-template-columns:1fr}.dashboard-panel.span-two,.admin-panel.span-two{grid-column:auto}.bookmark-list article{grid-template-columns:1fr}.bookmark-image img{width:100%;height:220px}.submission-list article{grid-template-columns:44px 1fr}.submission-list>.status-badge{grid-column:2}.search-result-grid{grid-template-columns:1fr}.search-result{grid-template-columns:90px 1fr}.search-result img{width:90px;height:100px}.auth-page>.auth-card{padding:42px 20px}.auth-visual{padding:50px 20px}.auth-visual h1{font-size:2.7rem}.crud-form-grid{grid-template-columns:1fr}.crud-form-grid .span-two{grid-column:auto}.admin-content{padding:16px}.admin-page-head{flex-direction:column}.admin-table th,.admin-table td{padding:10px}.feedback-admin-list article,.faq-admin-grid article{grid-template-columns:40px 1fr}.feedback-admin-actions,.faq-admin-grid .table-actions{grid-column:2}.chatbot-panel{right:15px;bottom:85px}.chatbot-fab{right:16px;bottom:16px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+
 :root[data-reduced-motion="true"] *, :root[data-reduced-motion="true"] *:before,:root[data-reduced-motion="true"] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 
 /* ========================================================================== */
@@ -335,11 +337,9 @@ button:active,.button:active,.ref-primary-btn:active,.ref-secondary-btn:active{t
 .motion-reduced *:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 :root[data-reduced-motion="true"] .motion-watch,.motion-reduced .motion-watch{opacity:1!important;transform:none!important;filter:none!important}
 
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  .motion-watch{opacity:1!important;transform:none!important;filter:none!important}
-}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+
 
 /* --------------------------------------------------------------------------
    Home hero — looping anime-action video background
@@ -378,15 +378,9 @@ button:active,.button:active,.ref-primary-btn:active,.ref-secondary-btn:active{t
   }
 }
 
-@media (prefers-reduced-motion: reduce){
-  .hero-action-video{display:none!important}
-  .reference-hero.has-action-video::before{
-    background-image:linear-gradient(90deg,rgba(249,251,255,.98) 0%,rgba(249,251,255,.92) 26%,rgba(249,251,255,.22) 57%,rgba(249,251,255,.05) 100%),var(--hero-image)!important;
-  }
-  :root[data-theme="dark"] .reference-hero.has-action-video::before{
-    background-image:linear-gradient(90deg,rgba(17,20,31,.98) 0%,rgba(17,20,31,.90) 30%,rgba(17,20,31,.35) 62%,rgba(17,20,31,.12) 100%),var(--hero-image)!important;
-  }
-}
+
+/* OS-level reduced-motion override removed: Fan Hub Plus uses its explicit Accessibility → Reduce motion toggle instead. */
+
 
 /* ========================================================================== */
 /* Focused UI polish — chatbot, account menu                                  */
@@ -645,5 +639,194 @@ button:active,.button:active,.ref-primary-btn:active,.ref-secondary-btn:active{t
   }
   .auth-card.wide .form-grid.two{
     grid-template-columns:1fr;
+  }
+}
+
+/* SRS dashboard bookmark collection */
+.dashboard-bookmark-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dashboard-bookmark-item{display:grid;grid-template-columns:72px minmax(0,1fr);gap:11px;align-items:center;padding:9px;border:1px solid var(--line);border-radius:13px;background:var(--surface-2);min-width:0;transition:.22s ease}
+.dashboard-bookmark-item:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 35%,var(--line));background:color-mix(in srgb,var(--primary) 5%,var(--surface))}
+.dashboard-bookmark-thumb{width:72px;height:64px;border-radius:10px;overflow:hidden;background:var(--surface);display:grid;place-items:center;color:var(--primary)}
+.dashboard-bookmark-thumb img{width:100%;height:100%;object-fit:cover}
+.dashboard-bookmark-copy{min-width:0}.dashboard-bookmark-copy>span{display:block;color:var(--primary);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.045em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dashboard-bookmark-copy strong{display:block;font-size:.8rem;line-height:1.35;margin:3px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dashboard-bookmark-copy p,.dashboard-bookmark-copy small{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;margin:0;color:var(--muted);font-size:.66rem;line-height:1.45}
+.dashboard-empty-state{min-height:120px;display:flex;align-items:center;gap:14px;padding:18px;border:1px dashed var(--line);border-radius:13px;background:var(--surface-2)}
+.dashboard-empty-state>svg{color:var(--primary);flex:none}.dashboard-empty-state>div{min-width:0;flex:1}.dashboard-empty-state strong{font-size:.82rem}.dashboard-empty-state p{margin:3px 0 0;font-size:.7rem}.dashboard-empty-state>a{color:var(--primary);font-size:.72rem;font-weight:800;white-space:nowrap}
+@media(max-width:760px){.dashboard-bookmark-list{grid-template-columns:1fr}.dashboard-bookmarks-panel{grid-column:auto!important}.dashboard-empty-state{align-items:flex-start;flex-wrap:wrap}.dashboard-empty-state>a{width:100%;padding-left:38px}}
+
+/* SRS Step 2 — rich featured articles + admin timeline editor */
+.article-rich-content{display:grid;gap:16px}.article-rich-content>p{margin:0;color:var(--text);opacity:.86}.article-rich-content h2,.article-rich-content h3,.article-rich-content h4{font-family:"Plus Jakarta Sans";letter-spacing:-.025em;margin:24px 0 0;color:var(--text)}.article-rich-content h2{font-size:1.85rem}.article-rich-content h3{font-size:1.35rem}.article-rich-content h4{font-size:1.08rem}.article-rich-content strong{font-weight:800;color:var(--text)}.article-rich-content em{color:var(--muted)}.article-rich-content a{color:var(--primary);text-decoration:underline;text-underline-offset:3px}.article-rich-content code{padding:2px 6px;border:1px solid var(--line);border-radius:6px;background:var(--surface-2);font-size:.9em}.article-rich-content ul,.article-rich-content ol{display:grid;gap:8px;margin:0;padding-left:24px}.article-rich-content li{padding-left:3px;color:color-mix(in srgb,var(--text) 86%,var(--muted))}.article-rich-content blockquote{margin:6px 0;padding:18px 20px;border-left:4px solid var(--primary);border-radius:0 14px 14px 0;background:color-mix(in srgb,var(--primary) 7%,var(--surface-2));font-size:1.08rem;font-weight:650;color:var(--text)}.article-rich-content hr{width:100%;border:0;border-top:1px solid var(--line);margin:10px 0}.article-inline-image{margin:14px 0 8px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface-2)}.article-inline-image img{display:block;width:100%;max-height:590px;object-fit:cover}.article-inline-image figcaption{padding:10px 14px;color:var(--muted);font-size:.72rem;border-top:1px solid var(--line)}.article-timeline{margin-top:48px}.timeline-heading{margin:0 0 26px -2px}.timeline-heading h2{margin:5px 0 4px}.timeline-heading p{margin:0;color:var(--muted);font-size:.82rem}.article-timeline .timeline-item>div{padding:2px 0 3px}.article-timeline .timeline-item p{margin:0;color:var(--muted);line-height:1.65}
+.rich-editor{display:grid;gap:0;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--surface)}.rich-editor-toolbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:8px;border-bottom:1px solid var(--line);background:var(--surface-2)}.rich-editor-toolbar button{width:34px;height:32px;display:grid;place-items:center;border:1px solid transparent;border-radius:8px;color:var(--muted);cursor:pointer}.rich-editor-toolbar button:hover{background:var(--surface);border-color:var(--line);color:var(--primary)}.rich-editor textarea{border:0!important;border-radius:0!important;box-shadow:none!important;min-height:260px;line-height:1.65}.field-help{display:block;padding:0 11px 10px;color:var(--muted);font-size:.65rem;font-weight:500;line-height:1.45}.timeline-editor{display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:13px;background:var(--surface-2)}.timeline-editor-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.timeline-editor-head>div{display:grid;gap:2px}.timeline-editor-head strong{color:var(--text);font-size:.78rem}.timeline-editor-head small{color:var(--muted);font-size:.64rem;font-weight:500}.compact-button{padding:7px 10px!important;font-size:.68rem!important;white-space:nowrap}.timeline-editor-empty{padding:14px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:.7rem;text-align:center}.timeline-editor-row{position:relative;display:grid;grid-template-columns:150px 1fr;gap:0 10px;padding:10px 44px 10px 10px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}.timeline-editor-row label{margin:0!important}.timeline-editor-row .timeline-description{grid-column:1/-1}.timeline-remove{position:absolute;right:8px;top:10px;width:30px;height:30px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--danger) 25%,var(--line));border-radius:8px;color:var(--danger);cursor:pointer}.timeline-remove:hover{background:color-mix(in srgb,var(--danger) 8%,var(--surface))}
+@media(max-width:620px){.article-rich-content h2{font-size:1.55rem}.article-inline-image{border-radius:15px}.timeline-editor-head{align-items:flex-start;flex-direction:column}.timeline-editor-row{grid-template-columns:1fr;padding-right:42px}.timeline-editor-row .timeline-description{grid-column:auto}}
+.crud-custom-field{display:grid;gap:7px;margin:13px 0}.crud-field-label{color:var(--muted);font-size:.76rem;font-weight:650}
+
+/* SRS Step 2 polish — modern article reading experience */
+.article-detail-modern{position:relative;padding-bottom:10px}.article-detail-modern .article-head{max-width:980px;padding:54px 0 34px}.article-detail-modern .article-head h1{font-size:clamp(3rem,5.8vw,5.35rem);line-height:1.01;max-width:1040px}.article-detail-modern .article-summary{max-width:850px;font-size:1.08rem;line-height:1.72;color:var(--muted)}.article-detail-modern .article-byline{padding-top:3px}.article-author-copy span{font-size:.66rem;color:var(--muted)}.article-head-actions{display:flex;align-items:center;gap:8px;margin-left:auto}.article-cover-wrap{max-width:1160px}.article-cover{position:relative;width:100%;margin:0;border-radius:26px;border:1px solid var(--line);background:var(--surface-2);box-shadow:0 20px 55px rgba(10,12,24,.14);overflow:hidden;aspect-ratio:16/7}.article-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.001)}.article-cover-shade{pointer-events:none;position:absolute;inset:0;background:linear-gradient(180deg,transparent 66%,rgba(5,7,15,.18) 100%)}.article-body{max-width:980px;padding-top:28px}.article-reading-card{position:relative;padding:46px 52px 52px;border-radius:28px;background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 97%,var(--primary) 3%),var(--surface));box-shadow:0 18px 55px rgba(10,12,24,.08);overflow:hidden}.article-reading-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--primary),var(--pink),transparent 82%)}.article-reading-label{display:flex;align-items:center;gap:13px;margin-bottom:26px}.article-reading-label span{font-size:.66rem;font-weight:850;letter-spacing:.16em;color:var(--primary)}.article-reading-label i{display:block;height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}.article-rich-content{gap:19px;max-width:790px;margin:0 auto}.article-rich-content>p{font-size:1.02rem;line-height:1.9;color:color-mix(in srgb,var(--text) 88%,var(--muted));opacity:1}.article-rich-content>p:first-of-type{font-size:1.075rem;line-height:1.95;color:var(--text)}.article-rich-content>p:first-of-type::first-letter{float:left;font-family:"Plus Jakarta Sans",sans-serif;font-size:3.85rem;line-height:.78;padding:.16em .12em 0 0;font-weight:800;color:var(--primary)}.article-rich-content h2,.article-rich-content h3,.article-rich-content h4{max-width:760px;line-height:1.2}.article-rich-content h2{font-size:2rem;margin-top:38px}.article-rich-content h3{font-size:1.52rem;margin-top:32px}.article-rich-content h4{font-size:1.18rem;margin-top:26px}.article-rich-content blockquote{margin:16px 0;padding:21px 24px;border-left:3px solid var(--primary);border-radius:0 16px 16px 0;font-size:1.04rem;line-height:1.75}.article-inline-image{width:min(980px,calc(100% + 80px));margin:30px -40px 16px;border-radius:20px;box-shadow:0 14px 36px rgba(10,12,24,.1)}.article-inline-image img{width:100%;height:auto;max-height:520px;object-fit:cover}.article-inline-image figcaption{padding:11px 16px}.article-timeline{max-width:790px;margin:52px auto 0;padding-top:34px;border-top:1px solid var(--line);border-left:0}.article-timeline .timeline-heading{margin:0 0 28px}.article-timeline .timeline-item{grid-template-columns:86px 1fr;margin-left:10px;padding:0 0 26px 26px;border-left:1px solid var(--line)}.article-timeline .timeline-item:last-child{padding-bottom:0}.article-timeline .timeline-item:before{left:-6px;top:7px;width:11px;height:11px}.article-timeline .timeline-item>span{font-size:.75rem}.article-timeline .timeline-item h3{margin:0 0 6px;font-size:1rem}.article-timeline .timeline-item p{font-size:.79rem;line-height:1.65}.article-related-section{padding-top:62px}
+
+@media(max-width:900px){.article-detail-modern .article-head{padding-top:42px}.article-cover-wrap{width:min(100% - 28px,1160px)}.article-cover{aspect-ratio:16/8}.article-reading-card{padding:38px 34px 44px}.article-inline-image{width:100%;margin:24px 0 12px}}
+@media(max-width:620px){.article-detail-modern .article-head h1{font-size:clamp(2.5rem,13vw,3.7rem)}.article-detail-modern .article-summary{font-size:.96rem}.article-head-actions{margin-left:0;width:100%}.article-cover-wrap{width:100%}.article-cover{border-radius:0;border-left:0;border-right:0;aspect-ratio:4/3;box-shadow:none}.article-body{width:min(100% - 20px,980px);padding-top:16px}.article-reading-card{padding:30px 20px 34px;border-radius:20px}.article-rich-content{gap:16px}.article-rich-content>p{font-size:.96rem;line-height:1.82}.article-rich-content>p:first-of-type{font-size:1rem}.article-rich-content>p:first-of-type::first-letter{font-size:3.2rem}.article-rich-content h2{font-size:1.55rem}.article-rich-content h3{font-size:1.28rem}.article-inline-image{border-radius:14px}.article-timeline .timeline-item{grid-template-columns:70px 1fr;padding-left:20px;margin-left:6px}}
+
+/* ========================================================================== 
+   SRS STEP 3 — ADMIN ANALYTICS
+   Active users, real category popularity and chatbot interaction volume.
+   ========================================================================== */
+.admin-insight-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:-4px 0 20px}.admin-insight-strip article{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--primary) 3%,var(--surface));box-shadow:var(--shadow-sm)}.admin-insight-strip svg{width:20px;height:20px;color:var(--primary);flex:none}.admin-insight-strip div{display:grid;gap:1px}.admin-insight-strip strong{font-size:1.05rem}.admin-insight-strip span{font-size:.65rem;color:var(--muted)}
+.panel-head>div{display:grid;gap:3px}.panel-head>div>small{font-size:.62rem;color:var(--muted);font-weight:500}.popularity-bars>div{grid-template-columns:110px minmax(90px,1fr) 36px 30px}.popularity-bars>div>small{font-size:.58rem;color:var(--muted)}
+.analytics-highlight-grid-five{grid-template-columns:repeat(5,minmax(0,1fr))}.analytics-highlight-grid-five article{min-width:0;padding:16px}.analytics-highlight-grid-five article strong{font-size:1.55rem}.analytics-highlight-grid-five article span{line-height:1.35}
+.analytics-admin-grid{align-items:start}.analytics-popularity-bars>div{padding-bottom:12px;border-bottom:1px solid var(--line)}.analytics-popularity-bars>div:last-child{border-bottom:0;padding-bottom:0}.analytics-popularity-bars>div>div:first-child{align-items:center;gap:14px}.analytics-popularity-bars strong{display:flex;align-items:center;gap:8px}.analytics-popularity-bars strong b{color:var(--primary);font-size:.62rem}.analytics-popularity-bars span{color:var(--muted)}
+.analytics-trend-panel{min-height:255px}.analytics-trend{height:165px;display:grid;grid-template-columns:repeat(7,minmax(24px,1fr));align-items:end;gap:8px;margin-top:14px}.analytics-trend-column{height:100%;display:grid;grid-template-rows:22px 1fr 18px;gap:5px;align-items:end;text-align:center;min-width:0}.analytics-trend-column>strong{font-size:.68rem;color:var(--text)}.analytics-trend-column>span{font-size:.58rem;color:var(--muted)}.analytics-trend-column>small{display:none}.analytics-trend-track{height:100%;min-height:80px;border-radius:8px;background:var(--surface-2);display:flex;align-items:flex-end;overflow:hidden;border:1px solid color-mix(in srgb,var(--line) 80%,transparent)}.analytics-trend-track i{display:block;width:100%;min-height:5px;border-radius:7px 7px 0 0;background:linear-gradient(180deg,var(--primary),var(--pink));transition:height .35s ease}
+.analytics-metric-dl{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px}.analytics-metric-dl div{min-width:0}.analytics-metric-dl dt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.analytics-metric-dl dd{font-variant-numeric:tabular-nums}
+@media(max-width:1180px){.analytics-highlight-grid-five{grid-template-columns:repeat(3,1fr)}.admin-insight-strip{grid-template-columns:1fr 1fr}.admin-insight-strip article:last-child{grid-column:1/-1}.analytics-metric-dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.admin-insight-strip,.analytics-highlight-grid-five{grid-template-columns:1fr}.admin-insight-strip article:last-child{grid-column:auto}.popularity-bars>div{grid-template-columns:90px minmax(70px,1fr) 30px}.popularity-bars>div>small{display:none}.analytics-trend{gap:5px}.analytics-metric-dl{grid-template-columns:1fr}}
+
+/* ========================================================================== 
+   SRS STEP 3 — ANALYTICS LAYOUT GAP FIX
+   Keep the long category ranking beside both trend cards so desktop space is
+   fully occupied, then balance the ranking cards in a clean two-column row.
+   ========================================================================== */
+.analytics-admin-grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-areas:
+    "popular popular popular popular popular popular popular popular active active active active"
+    "popular popular popular popular popular popular popular popular chatbot chatbot chatbot chatbot"
+    "content content content content content content media media media media media media"
+    "totals totals totals totals totals totals totals totals totals totals totals totals";
+  gap:18px;
+  align-items:stretch;
+}
+.analytics-admin-grid>.admin-panel{min-width:0;height:100%}
+.analytics-admin-grid>section:nth-child(1){grid-area:popular}
+.analytics-admin-grid>section:nth-child(2){grid-area:active}
+.analytics-admin-grid>section:nth-child(3){grid-area:chatbot}
+.analytics-admin-grid>section:nth-child(4){grid-area:content}
+.analytics-admin-grid>section:nth-child(5){grid-area:media}
+.analytics-admin-grid>section:nth-child(6){grid-area:totals}
+.analytics-admin-grid>.analytics-trend-panel{min-height:0;display:flex;flex-direction:column}
+.analytics-admin-grid>.analytics-trend-panel .analytics-trend{flex:1;min-height:165px}
+.analytics-admin-grid>section:nth-child(4),
+.analytics-admin-grid>section:nth-child(5){display:flex;flex-direction:column}
+.analytics-admin-grid>section:nth-child(4) .rank-list,
+.analytics-admin-grid>section:nth-child(5) .rank-list{flex:1}
+
+@media(max-width:1180px){
+  .analytics-admin-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    grid-template-areas:
+      "popular popular popular popular popular popular"
+      "active active active chatbot chatbot chatbot"
+      "content content content media media media"
+      "totals totals totals totals totals totals";
+  }
+}
+@media(max-width:760px){
+  .analytics-admin-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "popular"
+      "active"
+      "chatbot"
+      "content"
+      "media"
+      "totals";
+  }
+}
+
+
+/* ==========================================================================
+   FAN HUB PLUS — MOTION RECOVERY HOTFIX
+   Restores the smooth deployed-style feel after the responsive overhaul.
+   ========================================================================== */
+
+/* Keep reveal motion soft and visible, never snappy. */
+.motion-watch{
+  opacity:0;
+  transform:translate3d(0,16px,0);
+  filter:blur(1.5px);
+  transition:
+    opacity .56s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+    transform .68s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+    filter .46s ease var(--motion-delay,0ms) !important;
+}
+.motion-watch.motion-inview{
+  opacity:1;
+  transform:translate3d(0,0,0);
+  filter:blur(0);
+}
+
+/* Responsive changes must never leave normal hover transitions instant. */
+:root[data-reduced-motion="false"] .reference-universe-card,
+:root[data-reduced-motion="false"] .featured-anime-card,
+:root[data-reduced-motion="false"] .community-post-card,
+:root[data-reduced-motion="false"] .content-card,
+:root[data-reduced-motion="false"] .article-card,
+:root[data-reduced-motion="false"] .media-card,
+:root[data-reduced-motion="false"] .merch-card,
+:root[data-reduced-motion="false"] .event-card,
+:root[data-reduced-motion="false"] .character-card,
+:root[data-reduced-motion="false"] .release-card,
+:root[data-reduced-motion="false"] .dashboard-panel,
+:root[data-reduced-motion="false"] .admin-panel{
+  transition:
+    transform .42s cubic-bezier(.22,1,.36,1),
+    box-shadow .42s cubic-bezier(.22,1,.36,1),
+    border-color .3s ease,
+    filter .3s ease !important;
+}
+
+/* Deployed-style hover: subtle depth, no sudden zoom/jump. */
+.reference-universe-card:hover,
+.featured-anime-card:hover,
+.community-post-card:hover,
+.content-card:hover,
+.article-card:hover,
+.media-card:hover,
+.merch-card:hover,
+.event-card:hover,
+.character-card:hover,
+.release-card:hover{
+  transform:translate3d(0,-3px,0) !important;
+  box-shadow:0 13px 30px rgba(28,32,58,.12);
+}
+
+.reference-universe-card img,
+.featured-anime-card img,
+.content-card img,
+.article-card img,
+.media-card img,
+.merch-card img,
+.event-card img,
+.character-card img,
+.release-card img{
+  transition:transform .72s cubic-bezier(.22,1,.36,1),filter .42s ease !important;
+}
+
+.reference-universe-card:hover img,
+.featured-anime-card:hover img,
+.content-card:hover img,
+.article-card:hover img,
+.media-card:hover img,
+.merch-card:hover img,
+.event-card:hover img,
+.character-card:hover img,
+.release-card:hover img{
+  transform:scale(1.025) !important;
+}
+
+/* Continuous ambient movement similar to the deployed experience. */
+.reference-kicker{animation:fhChipFloat 4.2s ease-in-out infinite !important}
+.hero-quote-chip{animation:fhQuoteFloat 5.6s ease-in-out infinite !important}
+.reference-promo-banner:before{animation:fhPromoShine 8s ease-in-out infinite !important}
+.reference-sitemap-strip:before{animation:fhSoftGlow 6s ease-in-out infinite alternate !important}
+
+/* Cards loaded from APIs should not remain hidden if browser restores a page. */
+@media (max-width:760px){
+  .motion-watch{
+    transform:translate3d(0,10px,0);
+    filter:none;
+    transition:
+      opacity .42s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms),
+      transform .50s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms) !important;
   }
 }
